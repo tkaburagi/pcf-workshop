@@ -11,14 +11,9 @@
 5.  Blue-Greenデプロイ / Blue-Green deployment [[Java](blue-green-deployment_java.md)]
 6.  [PCF Metricsによるアプリケーションのモニタリング / Application monitoring with PCF Metrics](pcf-metrics.md) 
 7.  [アプリケーションログの転送 / Forward application log](logging.md)
+8.  Concourseによる継続的デリバリー
+9.  Pivotal Container Serviceの利用
 
 ## Additional contents
-1. 2️⃣ バックエンドサービス(MySQL)の利用 / Use backend service(MySQL) [[Java(JPA版)](backend-service-mysql_java.md)]
-2. 4️⃣ バックエンドサービス(Oracle Database)の利用 / Use backend service(Oracle Database) [[Java(JPA版)](backend-service-oracle_java.md)]
-
-## 利用規約
-
-無断で本ドキュメントの一部または全部を改変したり、本ドキュメントを用いた二次的著作物を作成することを禁止します。ただし、ドキュメント修正のためのPull Requestは大歓迎です。
-
-----
-© 2017 Pivotal Japan
+1. バックエンドサービス(MySQL)の利用 / Use backend service(MySQL) [[Java(JPA版)](backend-service-mysql_java.md)]
+2. バックエンドサービス(Oracle Database)の利用 / Use backend service(Oracle Database) [[Java(JPA版)](backend-service-oracle_java.md)]
