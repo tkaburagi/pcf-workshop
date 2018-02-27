@@ -13,8 +13,8 @@
 7.  [アプリケーションログの転送 / Forward application log](logging.md)
 
 ## Additional contents
-x. 2️⃣ バックエンドサービス(MySQL)の利用 / Use backend service(MySQL) [[Java(JPA版)](backend-service-mysql_java.md)]
-x. 4️⃣ バックエンドサービス(Oracle Database)の利用 / Use backend service(Oracle Database) [[Java(JPA版)](backend-service-oracle_java.md)]
+1. 2️⃣ バックエンドサービス(MySQL)の利用 / Use backend service(MySQL) [[Java(JPA版)](backend-service-mysql_java.md)]
+2. 4️⃣ バックエンドサービス(Oracle Database)の利用 / Use backend service(Oracle Database) [[Java(JPA版)](backend-service-oracle_java.md)]
 
 ## 利用規約
 
