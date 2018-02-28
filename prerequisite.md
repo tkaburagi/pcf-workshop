@@ -1,7 +1,6 @@
-
-
-
 ## 事前準備
+
+macOS, Linuxのいずれかを推奨します。
 
 ### Java SE Development Kit 8
 
@@ -23,8 +22,14 @@ Macの場合はインストール不要です。
 
 Windowsの場合は、[Git](https://git-scm.com/)をインストールすれば同梱されます。
 
-### Cloud Foundry CLI
+### watchコマンド
 
+watchコマンドをインストールしてください。
+``` console
+brew install watch
+```
+
+### Cloud Foundry CLI
 
 * [Windows 64 bit](https://cli.run.pivotal.io/stable?release=windows64&source=pws)
 * [Windows 32 bit](https://cli.run.pivotal.io/stable?release=windows32&source=pws)
@@ -42,7 +47,3 @@ Windowsの場合は、[Git](https://git-scm.com/)をインストールすれば�
 $ cf -v
 cf version 6.15.0+fa1bfe2-2016-01-13
 ```
-
-### Pivotal Web Servicesのアカウント作成
-
-[こちら](pivotal-web-services.md)を参照してください。
