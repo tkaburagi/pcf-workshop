@@ -13,6 +13,7 @@
 7.  [アプリケーションログの転送](logging.md)
 8.  [Concourseによる継続的デリバリー](concourse.md)
 9.  [Pivotal Container Serviceの利用](pks.md)
+10. [アンケート](https://goo.gl/forms/2UuxaHIHG8PriGGb2)
 
 ## Additional contents
 1. バックエンドサービス(MySQL)の利用 / Use backend service(MySQL) [[Java(JPA版)](backend-service-mysql_java.md)]
