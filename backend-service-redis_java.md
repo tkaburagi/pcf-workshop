@@ -64,43 +64,19 @@ class Greeter {
 
 ### サービスを使う
 
-Cloud Foundryのバックエンドサービスを使ってみましょう。`cf marketplace`コマンドで利用可能なサービス一覧を表示できます。
+Pivotal Cloud Foundryのバックエンドサービスを使ってみましょう。`cf marketplace`コマンドで利用可能なサービス一覧を表示できます。
 
-PWSの場合、次のサービスが用意されています。
+今回の環境の場合、次のサービスが用意されています。
 
 ``` console
-$ cf marketplace
-Getting services from marketplace in org tmaki / space development as ****@gmail.com...
+cf marketplace
+Getting services from marketplace in org handson-instructor / space development as admin...
 OK
 
-service          plans                                                                                description   
-3scale           free_appdirect, basic_appdirect*, pro_appdirect*                                     API Management Platform   
-app-autoscaler   bronze, gold                                                                         Scales bound applications in response to load (beta)   
-blazemeter       free-tier, basic1kmr*, pro5kmr*                                                      Performance Testing Platform   
-cedexisopenmix   opx_global*, openmix-gslb-with-fusion-feeds*                                         Openmix Global Cloud &amp; Data Center Load Balancer   
-cedexisradar     free-community-edition                                                               Free Website&amp; Mobile App Performance Reports   
-cleardb          spark, boost*, amp*, shock*                                                          Highly available MySQL for your Apps.   
-cloudamqp        lemur, tiger*, bunny*, rabbit*, panda*                                               Managed HA RabbitMQ servers in the cloud   
-cloudforge       free, standard*, pro*                                                                Development Tools In The Cloud   
-elephantsql      turtle, panda*, hippo*, elephant*                                                    PostgreSQL as a Service   
-flashreport      trial, basic*, silver*, gold*, platinum*                                             Generate PDF from your data   
-ironworker       production*, starter*, developer*, lite                                              Job Scheduling and Processing   
-loadimpact       lifree, li100*, li500*, li1000*                                                      Automated and on-demand performance testing   
-memcachedcloud   100mb*, 250mb*, 500mb*, 1gb*, 2-5gb*, 5gb*, 30mb                                     Enterprise-Class Memcached for Developers   
-memcachier       dev, 100*, 250*, 500*, 1000*, 2000*, 5000*, 7500*, 10000*, 20000*, 50000*, 100000*   The easiest, most advanced memcache.   
-mongolab         sandbox                                                                              Fully-managed MongoDB-as-a-Service   
-newrelic         standard                                                                             Manage and monitor your apps   
-pubnub           free                                                                                 Build Realtime Apps that Scale   
-rediscloud       100mb*, 250mb*, 500mb*, 1gb*, 2-5gb*, 5gb*, 10gb*, 50gb*, 30mb                       Enterprise-Class Redis for Developers   
-searchify        small*, plus*, pro*                                                                  Custom search you control   
-searchly         small*, micro*, professional*, advanced*, starter, business*, enterprise*            Search Made Simple. Powered-by Elasticsearch   
-sendgrid         free, bronze*, silver*                                                               Email Delivery. Simplified.   
-ssl              basic*                                                                               Upload your SSL certificate for your app(s) on your custom domain   
-stamplay         plus*, premium*, core, starter*                                                      API-first development platform   
-statica          starter, spike*, micro*, medium*, large*, enterprise*, premium*                      Enterprise Static IP Addresses   
-temporize        small*, medium*, large*                                                              Simple and flexible job scheduling for your application   
-
-* These service plans have an associated cost. Creating a service instance will incur this cost.
+service          plans                                    description
+app-autoscaler   standard                                 Scales bound applications in response to load
+p-redis          dedicated-vm, shared-vm                  Redis service to provide pre-provisioned instances configured as a datastore, running on a shared or dedicated VM.
+p.redis          cache-small, cache-medium, cache-large   Redis service to provide on-demand dedicated instances configured as a cache.
 
 TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
 ```
@@ -108,10 +84,10 @@ TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans o
 アプリケーションからサービスを使うには、まずはサービスインスタンスを作成する必要があります。
 サービスインスタンスは`cf create-service <Service Name> <Plan> <Service Instance Name>`で作成できます。
 
-Redisのサービスである`rediscloud`の`30mb`プラン（無償）のサービスインスタンスを`myredis`という名前で作成します。
+Redisのサービスである`p-redis`の`shared-vm`プラン（無償）のサービスインスタンスを`myredis`という名前で作成します。
 
 ``` console
-$ cf create-service rediscloud 30mb myredis
+$ cf create-service p-redis shared-vm myredis
 ```
 
 `cf services`コマンドで作成したサービスインスタンス一覧を表示できます。
@@ -122,7 +98,7 @@ Getting services in org tmaki / space development as ****@gmail.com...
 OK
 
 name      service      plan   bound apps   last operation   
-myredis   rediscloud   30mb                create succeeded 
+myredis   p-redis      shared-vm                create succeeded 
 ```
 
 アプリケーションをビルドでpushしましょう。アプリケーションの起動前にサービスインスタンスをバインドする必要があるため、いったん`--no-start`オプションをつけてpushします。
@@ -150,7 +126,7 @@ OK
 次に`cf bind-service <App> <Service Instance>`コマンドで
 
 ``` console
-$ cf bind-service hello-redis-tmaki myredis
+$ cf bind-service hello-redis-<STUDENT_ID> myredis
 Binding service myredis to app hello-redis-tmaki in org tmaki / space development as ****@gmail.com...
 OK
 TIP: Use 'cf restage hello-redis-tmaki' to ensure your env variable changes take effect
@@ -159,7 +135,7 @@ TIP: Use 'cf restage hello-redis-tmaki' to ensure your env variable changes take
 `cf env`でアプリケーションの環境変数を確認できます。環境変数`VCAP_SERVICES`にアプリケーションにバインドされたサービスインスタンスの情報がJSON形式で設定されます。
 
 ``` console
-$ cf env hello-redis-tmaki
+$ cf env hello-redis-<STUDENT_ID>
 Getting env variables for app hello-redis-tmaki in org tmaki / space development as ****@gmail.com...
 OK
 
@@ -226,7 +202,7 @@ No staging env variables have been set
 サービスインスタンスをバインドしたら`cf start`でアプリケーションを起動しましょう。
 
 ``` console
-$ cf start hello-redis-tmaki
+$ cf start hello-redis-<STUDENT_ID>
 ```
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/5f9e014c-e422-6882-ba82-3a66f4c4462b.png)
@@ -236,7 +212,7 @@ $ cf start hello-redis-tmaki
 ここでは、Redisに関する設定を全く行いませんでしたが、何が起きているのでしょうか。ログを見てみましょう。
 
 ``` console
-$ cf logs hello-redis-tmaki --recent
+$ cf logs hello-redis-<STUDENT_ID> --recent
 ```
 
 ``` console
@@ -370,7 +346,7 @@ spring.redis.password=${vcap.services.myredis.credentials.password}
 なお、Auto Reconfigureは以下のように環境変数を設定すれば無効化できます。
 
 ``` console
-$ cf set-env hello-redis-tmaki JBP_CONFIG_SPRING_AUTO_RECONFIGURATION '{enabled: false}'
-$ cf set-env hello-redis-tmaki SPRING_PROFILES_ACTIVE cloud # Auto Reconfigureを無効にするとcloudプロファイルも適用されなくなるため、cloudプロファイルは明示的に指定する。
-$ cf restart hello-redis-tmaki
+$ cf set-env hello-redis-<STUDENT_ID> JBP_CONFIG_SPRING_AUTO_RECONFIGURATION '{enabled: false}'
+$ cf set-env hello-redis-<STUDENT_ID> SPRING_PROFILES_ACTIVE cloud # Auto Reconfigureを無効にするとcloudプロファイルも適用されなくなるため、cloudプロファイルは明示的に指定する。
+$ cf restart hello-redis-<STUDENT_ID>
 ```
