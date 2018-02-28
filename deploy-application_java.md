@@ -74,16 +74,16 @@ $ java -jar target/hello-cf-0.0.1-SNAPSHOT.jar
 
 Hello World!が表示されれば成功です。
 
-### アプリケーションをCloud FoundryにPush
+### アプリケーションをPivotal Cloud FoundryにPush
 
-ビルドしたアプリケーションをCloud FoundryにPushしましょう。
+ビルドしたアプリケーションをPivotal Cloud FoundryにPushしましょう。
 `cf`コマンドを使えばとても簡単です。以下のコマンドを実行してください。
 
 ``` console
-$ cf push hello-<your name> -p target/hello-cf-0.0.1-SNAPSHOT.jar
+$ cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar
 ```
 
-`<your name>`は自分の名前などを置換して、一意にしてください。以下では`<your name>`を`tmaki`とします。適宜自分の名前に読み替えてください。
+`<STUDENT_ID>`は配布されたIDに置換してください。
 
 
 ``` console
@@ -192,7 +192,7 @@ hello-tmaki   started           1/1         1G       1G     hello-tmaki.cfapps.i
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/79860de1-4846-c922-8583-787e77a185d2.png)
 
-Cloud Foundry上にデプロイされたアプリケーションにもアクセスできました。
+Pivotal Cloud Foundry上にデプロイされたアプリケーションにもアクセスできました。
 
 [http://hello-tmaki.cfapps.io/env](http://hello-tmaki.cfapps.io/env)にアクセスすると環境変数やプロパティを確認できます。
 
@@ -218,11 +218,11 @@ Cloud Foundry上にデプロイされたアプリケーションにもアクセ�
 [Pivotal Cloud Foundry Apps Manager](https://apps.sys.pcflab.jp)を見てみましょう。
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/4fd1565a-9bad-63a2-9382-6e7f59363b10.png)
 
-「Space development」をクリックしてください。`development`というスペースにデプロイされているアプリケーションの一覧を確認できます。`hello-<your name>`が表示されています。
+「Space development」をクリックしてください。`development`というスペースにデプロイされているアプリケーションの一覧を確認できます。`hello-<STUDENT_ID>`が表示されています。
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/a0684f30-3757-2cfe-0580-c19b3598a499.png)
 
-`hello-<your name>`をクリックしてください。
+`hello-<STUDENT_ID>`をクリックしてください。
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/58280398-6b1b-1d41-7581-62ba76f24d06.png)
 
@@ -299,7 +299,7 @@ OK
 
 ### (オプション) `--random-route`を使う
 
-先ほどはアプリケーション名に`-<your name>`をつけ一意にしました。`hello`だと重複する可能性が高いためです。実はアプリケーション名自体はスペース内で一意であればよく、一意にすべきはホスト名(`xxxx.cfapps.io`の`xxxx`の部分)です。これは`-n`または`--hostname`で指定できます。
+先ほどはアプリケーション名に`-<STUDENT_ID>`をつけ一意にしました。`hello`だと重複する可能性が高いためです。実はアプリケーション名自体はスペース内で一意であればよく、一意にすべきはホスト名(`xxxx.cfapps.io`の`xxxx`の部分)です。これは`-n`または`--hostname`で指定できます。
 一意なホスト名にするには`--random-route`を追加すれば良いです。
 
 ``` console
