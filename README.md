@@ -1,8 +1,3 @@
-# cf-workshop
-* [Introduction (今すぐ始めるCloud Foundry)](http://www.slideshare.net/makingx/cloud-foundry-hackt-hacktk)
-* <s>[Introduction (Introduction to Cloud Foundry)](http://www.slideshare.net/makingx/introduction-to-cloud-foundry-jjug)</s>
-
-
 ## Contents
 1.  [事前準備 / Prerequisite](prerequisite.md)
 2.  [簡単なアプリケーションをデプロイ](deploy-application_java.md)
