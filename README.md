@@ -3,7 +3,7 @@
 
 ## Contents
 1.  [事前準備](prerequisite.md)
-2.  [PCFへログイン](cl-login.md)
+2.  [PCFへログイン](cf-login.md)
 3.  [簡単なアプリケーションをデプロイ](deploy-application_java.md)
 4.  [バックエンドサービス(Redis)の利用](backend-service-redis_java.md)
 5.  [スケールアウト](scale-out_java.md)
