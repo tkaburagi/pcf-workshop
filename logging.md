@@ -67,14 +67,14 @@ myredis         rediscloud      30mb   hello-redis-tmaki   create succeeded
 my-log-drain    user-provided 
 ```
 
-Redisの場合と同様にログ転送サービスインスタンスも`hello-redis-<your name>`にバインドしてrestartしてください。
+Redisの場合と同様にログ転送サービスインスタンスも`hello-redis-<STUDENT_ID>`にバインドしてrestartしてください。
 
 ```
-$ cf bind-service hello-redis-tmaki my-log-drain
-$ cf restart hello-redis-tmaki
+$ cf bind-service hello-redis-<STUDENT_ID> my-log-drain
+$ cf restart hello-redis-<STUDENT_ID>
 ```
 
-これで`hello-redis-tmaki`のアプリケーションログはLogz.ioへ転送されます。
+これで`hello-redis-<STUDENT_ID>`のアプリケーションログはLogz.ioへ転送されます。
 
 ダッシュボードからKibanaにアクセスしてください。虫眼鏡ボタンをクリックすると再検索されます。
 
@@ -82,10 +82,10 @@ $ cf restart hello-redis-tmaki
 
 ![image.png](https://qiita-image-store.s3.amazonaws.com/0/1852/f1db62f3-f6d2-56e1-6850-f6ae946e5e8b.png)
 
-アプリケーションログの確認が終わったら`hello-redis-tmaki`を削除してください。
+アプリケーションログの確認が終わったら`hello-redis-<STUDENT_ID>`を削除してください。
 
 ``` console
-$ cf delete hello-redis-tmaki
+$ cf delete hello-redis-<STUDENT_ID>
 ```
 
 
@@ -142,11 +142,11 @@ my-log-drain    user-provided
 Redisの場合と同様にログ転送サービスインスタンスも`hello-redis-<your name>`にバインドしてrestartしてください。
 
 ```
-$ cf bind-service hello-redis-tmaki my-log-drain
-$ cf restart hello-redis-tmaki
+$ cf bind-service hello-redis-<STUDENT_ID> my-log-drain
+$ cf restart hello-redis-<STUDENT_ID>
 ```
 
-これで`hello-redis-tmaki`のアプリケーションログはLogit.ioへ転送されます。
+これで`hello-redis-<STUDENT_ID>`のアプリケーションログはLogit.ioへ転送されます。
 
 
 [Dashboard](https://logit.io/Dashboard)にアクセスし、Kibanaの"Access"をクリックしてください。
@@ -165,10 +165,10 @@ $ cf restart hello-redis-tmaki
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/ac470807-cc17-357e-2343-98d21e9632d1.png)
 
-アプリケーションログの確認が終わったら`hello-redis-tmaki`を削除してください。
+アプリケーションログの確認が終わったら`hello-redis-<STUDENT_ID>`を削除してください。
 
 ``` console
-$ cf delete hello-redis-tmaki
+$ cf delete hello-redis-<STUDENT_ID>
 ```
 
 
@@ -217,14 +217,14 @@ myredis         rediscloud      30mb   hello-redis-tmaki   create succeeded
 my-log-drain    user-provided 
 ```
 
-Redisの場合と同様にログ転送サービスインスタンスも`hello-redis-<your name>`にバインドしてrestartしてください。
+Redisの場合と同様にログ転送サービスインスタンスも`hello-redis-<STUDENT_ID>`にバインドしてrestartしてください。
 
 ```
-$ cf bind-service hello-redis-tmaki my-log-drain
-$ cf restart hello-redis-tmaki
+$ cf bind-service hello-redis-<STUDENT_ID> my-log-drain
+$ cf restart hello-redis-<STUDENT_ID>
 ```
 
-これで`hello-redis-tmaki`のアプリケーションログはPapertrailへ転送されます。
+これで`hello-redis-<STUDENT_ID>`のアプリケーションログはPapertrailへ転送されます。
 
 
 [Dashboard](https://papertrailapp.com/dashboard)にアクセスし、`hello-cf`をクリックしてください。
@@ -237,10 +237,10 @@ $ cf restart hello-redis-tmaki
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/38fb41e8-b183-7b8b-f466-2aa315f22b80.png)
 
 
-アプリケーションログの確認が終わったら`hello-redis-tmaki`を削除してください。
+アプリケーションログの確認が終わったら`hello-redis-<STUDENT_ID>`を削除してください。
 
 ``` console
-$ cf delete hello-redis-tmaki
+$ cf delete hello-redis-<STUDENT_ID>
 ```
 
 
