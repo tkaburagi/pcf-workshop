@@ -21,4 +21,4 @@ org:            handson-instructor
 space:          development
 ```
 
-今回は"Hands-on-*"というorganizationと"development", "staging", "production"というspaceを利用します。
+今回は"Hands-on-*"というorganizationと"development"というspaceを利用します。
