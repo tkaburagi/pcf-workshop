@@ -1,3 +1,6 @@
+## Document
+[こちら](https://www.dropbox.com/s/6yhirlbgyac7jqt/pcf-workshop.pdf?dl=0)
+
 ## Contents
 1.  [事前準備 / Prerequisite](prerequisite.md)
 2.  [簡単なアプリケーションをデプロイ](deploy-application_java.md)
