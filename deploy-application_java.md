@@ -215,7 +215,7 @@ Cloud Foundry上にデプロイされたアプリケーションにもアクセ�
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/dfafa4f4-0ec1-e568-ba5e-3d5cfaa799a5.png)
 
-[PWSの管理画面](https://console.run.pivotal.io)を見てみましょう。
+[Pivotal Cloud Foundry Apps Manager](https://apps.sys.pcflab.jp)を見てみましょう。
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/4fd1565a-9bad-63a2-9382-6e7f59363b10.png)
 
 「Space development」をクリックしてください。`development`というスペースにデプロイされているアプリケーションの一覧を確認できます。`hello-<your name>`が表示されています。
