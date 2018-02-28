@@ -1,4 +1,4 @@
-## Blue-Greenデプロイ (Java編)
+## Blue-Greenデプロイ
 
 [Blue-Greenデプロイ](http://martinfowler.com/bliki/BlueGreenDeployment.html)はBlueとGreenとよばれる2つの環境を用意して、ルーティングを切り替えることによりダウンタイムリスクを低減させる手法です。
 
@@ -9,7 +9,7 @@ Cloud Foundryでは`cf map-route`、`umnap-route`コマンドによりルーテ�
 ``` yaml
 ---
 applications:
-  - name: hello-tmaki
+  - name: hello-<STUDENT_ID>
     path: target/hello-cf-0.0.1-SNAPSHOT.jar
     buildpack: java_buildpack
 ```
@@ -36,7 +36,7 @@ $ cf push
 現在のアプリケーションのバージョンを確認するために、`curl`を定期的に実行しましょう。
 
 ``` console
-$ while true; do curl -s http://hello-tmaki.cfapps.io; echo; sleep 1;done
+$ while true; do curl -s http://hello-<STUDENT_ID>.cfapps.io; echo; sleep 1;done
 ```
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/b47937f2-9d32-23fd-e386-de7018394372.png)
@@ -54,7 +54,7 @@ $ while true; do curl -s http://hello-tmaki.cfapps.io; echo; sleep 1;done
 
 ``` console
 $ ./mvnw package -Dmaven.test.skip=true
-$ cf push hello-tmaki-green # manifest内のapplication nameをoverride
+$ cf push hello-<STUDENT_ID>-green # manifest内のapplication nameをoverride
 ```
 
 `cf apps`の結果は以下のようになります。
@@ -73,10 +73,10 @@ hello-tmaki-green   started           1/1         1G       1G     hello-tmaki-gr
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/6d89019e-59cd-4718-47c5-6115a97f29f3.png)
 
-`cf map-route <App> <Domain> -n <Hostname>`で`hello-tmaki.cfapps.io`へのリクエストが`hello-tmaki-green`にルーティングされるようにします。
+`cf map-route <App> <Domain> -n <Hostname>`で`hello-<STUDENT_ID>.cfapps.io`へのリクエストが`hello-<STUDENT_ID>-green`にルーティングされるようにします。
 
 ``` console
-$ cf map-route hello-tmaki-green cfapps.io -n hello-tmaki
+$ cf map-route hello-<STUDENT_ID>-green cfapps.io -n hello-tmaki
 Creating route hello-tmaki.cfapps.io for org tmaki / space development as ****@gmail.com...
 OK
 Route hello-tmaki.cfapps.io already exists
@@ -84,15 +84,15 @@ Adding route hello-tmaki.cfapps.io to app hello-tmaki-green in org tmaki / space
 OK
 ```
 
-2つのアプリケーションに対して`hello-tmaki.cfapps.io`でアクセスできるため、`curl`の結果は次のように`V1`と`V2`の両方が表示されるようになります。
+2つのアプリケーションに対して`hello-<STUDENT_ID>.cfapps.io`でアクセスできるため、`curl`の結果は次のように`V1`と`V2`の両方が表示されるようになります。
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/56c6deb5-1327-dd2f-f069-7cf0a0af6192.png)
 
 
-`map-route`とは反対の`unmap-route`コマンドで`hello-tmaki`へのルーティングを外します。
+`map-route`とは反対の`unmap-route`コマンドで`hello-<STUDENT_ID>`へのルーティングを外します。
 
 ``` console
-$ cf unmap-route hello-tmaki cfapps.io -n hello-tmaki
+$ cf unmap-route hello-<STUDENT_ID> cfapps.io -n hello-<STUDENT_ID>
 Removing route hello-tmaki.cfapps.io from app hello-tmaki in org tmaki / space development as ****@gmail.com...
 OK
 ```
@@ -103,11 +103,11 @@ OK
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/d3924903-283e-c923-1e9d-d1e28c648964.png)
 
 
-`V2`に問題がなければ、旧バージョンを削除し、`hello-tmaki-green.cfapps.io`のルーティングも削除します。
+`V2`に問題がなければ、旧バージョンを削除し、`hello-<STUDENT_ID>-green.cfapps.io`のルーティングも削除します。
 
 ``` console
-$ cf delete hello-tmaki
-$ cf unmap-route hello-tmaki-green cfapps.io -n hello-tmaki-green
+$ cf delete hello-<STUDENT_ID>
+$ cf unmap-route hello-<STUDENT_ID>-green cfapps.io -n hello-<STUDENT_ID>-green
 ```
 
 `hello-tmaki.cfapps.io`にアクセスし続けていましたが、404エラーなどが発生することなく`V1`から`V2`へ移行することができました。
@@ -124,7 +124,7 @@ hello-tmaki-green   started           1/1         1G       1G     hello-tmaki.cf
 アプリケーション名を`hello-tmaki`に戻しましょう。
 
 ``` console
-$ cf rename hello-tmaki-green hello-tmaki
+$ cf rename hello-<STUDENT_ID>-green hello-<STUDENT_ID>
 ```
 
 これで元の通りです。
@@ -139,11 +139,11 @@ hello-tmaki   started           1/1         1G       1G     hello-tmaki.cfapps.i
 ```
 
 
-`cf delete hello-tmaki`する前に、もし新バージョン(green)で問題が発覚すれば、旧バージョン(blue)に切り戻しすればよいです。
+`cf delete hello-<STUDENT_ID>`する前に、もし新バージョン(green)で問題が発覚すれば、旧バージョン(blue)に切り戻しすればよいです。
 
 ``` console
-$ cf map-route hello-tmaki cfapps.io -n hello-tmaki
-$ cf unmap-route hello-tmaki-green cfapps.io -n hello-tmaki
+$ cf map-route hello-<STUDENT_ID> cfapps.io -n hello-<STUDENT_ID>
+$ cf unmap-route hello-<STUDENT_ID>-green cfapps.io -n hello-<STUDENT_ID>
 ```
 
 を行えば`V1`に戻ります。
@@ -182,7 +182,7 @@ $ cf help -a | grep zero
 
 ``` console
 $ ./mvnw clean package
-$ cf zero-downtime-push hello-tmaki -f manifest.yml 
+$ cf zero-downtime-push hello-<STUDENT_ID> -f manifest.yml 
 ```
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/be7420f4-4497-48ed-212a-3b14be4f8de2.png)
