@@ -2,16 +2,17 @@
 [こちら](https://www.dropbox.com/s/6yhirlbgyac7jqt/pcf-workshop.pdf?dl=0)
 
 ## Contents
-1.  [事前準備 / Prerequisite](prerequisite.md)
-2.  [簡単なアプリケーションをデプロイ](deploy-application_java.md)
-3.  [バックエンドサービス(Redis)の利用](backend-service-redis_java.md)
-4.  [スケールアウト](scale-out_java.md)
-5.  [Blue-Greenデプロイ](blue-green-deployment_java.md)
-6.  [PCF Metricsによるアプリケーションのモニタリング](pcf-metrics.md) 
-7.  [アプリケーションログの転送](logging.md)
-8.  [Concourseによる継続的デリバリー](concourse.md)
-9.  [Pivotal Container Serviceの利用](pks.md)
-10. [アンケート](https://goo.gl/forms/2UuxaHIHG8PriGGb2)
+1.  [事前準備](prerequisite.md)
+2.  [PCFへログイン](cl-login.md)
+3.  [簡単なアプリケーションをデプロイ](deploy-application_java.md)
+4.  [バックエンドサービス(Redis)の利用](backend-service-redis_java.md)
+5.  [スケールアウト](scale-out_java.md)
+6.  [Blue-Greenデプロイ](blue-green-deployment_java.md)
+7.  [PCF Metricsによるアプリケーションのモニタリング](pcf-metrics.md) 
+8.  [アプリケーションログの転送](logging.md)
+9.  [Concourseによる継続的デリバリー](concourse.md)
+10. [Pivotal Container Serviceの利用](pks.md)
+11. [アンケート](https://goo.gl/forms/2UuxaHIHG8PriGGb2)
 
 ## Additional contents
 1. バックエンドサービス(MySQL)の利用 / Use backend service(MySQL) [[Java(JPA版)](backend-service-mysql_java.md)]
