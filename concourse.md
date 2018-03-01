@@ -4,7 +4,7 @@
 http://ci.pcflab.jp/
 
 ## バージョン1のアプリケーションのデプロイ
-(バージョン1のアプリケーション)[https://github.com/tkaburagi1214/pcf-workshop/blob/master/demo-bug-1.0.0-BUILD-SNAPSHOT.jar]を`cf push`します。
+[バージョン1のアプリケーション](https://github.com/tkaburagi1214/pcf-workshop/blob/master/demo-bug-1.0.0-BUILD-SNAPSHOT.jar)を`cf push`します。
 ``` console
 cf push pcfapp-<STUDENT_ID> -p demo-bug-1.0.0-BUILD-SNAPSHOT.jar 
 ```
