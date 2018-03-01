@@ -16,7 +16,9 @@ cf push pcfapp-<STUDENT_ID> -p demo-bug-1.0.0-BUILD-SNAPSHOT.jar
 ``` console
 fly login -t ci -c http://35.201.185.239 -n handson
 ```
-`<カッコ内>`の値は自分の環境に合わせて置き換えてください。
+
+CDのパイプラインを記述します。ConcourseではパイプラインはすべてYamlで定義します。
+`pipeline.yml`というファイルを作成して下記をコピペしてください。`<カッコ内>`の値は自分の環境に合わせて置き換えてください。
 
 ``` yaml
 ---
