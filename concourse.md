@@ -12,7 +12,7 @@ cf push pcfapp-<STUDENT_ID> -p demo-bug-1.0.0-BUILD-SNAPSHOT.jar
 
 ## Concourseパイプラインの作成
 
-`fly`コマンドを使ってConcourseにログインします。
+`fly`コマンドを使ってConcourseにログインします。パスワードとユーザネームは事前に配布されます。
 ``` console
 fly login -t ci -c http://35.201.185.239 -n handson
 ```
@@ -66,6 +66,14 @@ jobs:
           mvn test
 ```
 
+上記のファイルをConcourseサーバにアップロードすることでパイプラインが生成されます。
+
+``` console
+fly -t ci set-pipeline -p simple-pipeline -c pipeline.yml
+```
+
+アップロードが成功したらWeb GUIで確認してみます。
+ブラウザで`http://ci.pcflab.jp/`へアクセスします。配布されたパスワードとユーザ名を使ってログインしてください。
 
 
 ## アプリケーションの修正
