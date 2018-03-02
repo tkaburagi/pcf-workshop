@@ -4,6 +4,13 @@
 http://ci.pcflab.jp/
 
 ## バージョン1のアプリケーションのデプロイ
+
+[pcf-workshop-app](https://github.com/tkaburagi1214/pcf-workshop-app)のレポジトリをforkします。
+下記画像の右上のボタンです。
+
+![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-02%20at%2010.05.01%20AM.png)
+
+
 [バージョン1のアプリケーション](https://github.com/tkaburagi1214/pcf-workshop/blob/master/demo-bug-1.0.0-BUILD-SNAPSHOT.jar)を`cf push`します。
 ``` console
 cf push pcfapp-<STUDENT_ID> -p demo-bug-1.0.0-BUILD-SNAPSHOT.jar 
