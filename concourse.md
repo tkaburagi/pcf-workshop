@@ -204,5 +204,9 @@ public class PcfdemoappApplication {
 ```
 
 ## Concourseパイプラインの実行
-
-## Concourseパイプラインの修正 (単体テスト実行の追加)
+アプリケーションを修正したらGithubにコミットします。GitにコミットするとConcourseから更新情報が取得され自動的にパイプラインが稼働します。
+``` console
+git add .
+git commit -m "Added I"
+git push
+```
