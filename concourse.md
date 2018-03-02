@@ -71,6 +71,10 @@ jobs:
           rm -rf ~/.m2
           ln -fs $(pwd)/m2 ~/.m2
           mvn test
+   - put
+     params: 
+       manifest: makemanifest/manifest.yml
+       current_app_name: pcfapp-<STUDENT_ID>
 ```
 
 上記のファイルをConcourseサーバにアップロードすることでパイプラインが生成されます。
