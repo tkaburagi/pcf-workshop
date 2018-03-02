@@ -88,6 +88,63 @@ Web GUIからパイプラインを実行します。
 
 ## アプリケーションの修正
 次にアプリケーションを修正し、gitにコミット、Concourseからその更新情報を取得し、アプリケーションをテストし、アップグレードという流れを実施します。
+
+まずはConcourseのパイプラインにアプリケーションをビルドとアップグレードするための処理を追加します。
+``` yaml
+---
+resources:
+  - name: pcfapp
+    type: git
+    source:
+      uri: <GIT_URI>
+      branch: <GIT_BRANCH>
+    check_every: 10s
+  - name: cf
+    type: cf
+    source:
+      api: api.sys.pcflab.jp
+      username: <STUDENT_ID>
+      password: <YOUR_PASSWD>
+      organization: <ORG_ID>
+      space: <SPACE_ID>
+      skip_cert_check: true
+jobs:
+- name: unit-test
+  plan:
+  - get: pcfapp
+    trigger: true
+  - task: mvn-test
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: maven
+      inputs:
+      - name: repo
+      caches:
+      - path: repo/m2   
+      run:
+        path: bash
+        args:
+        - -c
+        - |
+          set -e
+          cd repo
+          rm -rf ~/.m2
+          ln -fs $(pwd)/m2 ~/.m2
+          mvn test
+  - name: build-and-artifact
+    serial_groups:[ version ]
+    plan:
+      - get: pcfdapp
+        passed: [ unit-test ]
+        trigger: true
+      - task: build
+        file: pcfdemoapp/ci/tasks/build.yml
+
+```
+
 アプリケーションのソースコードを下記のように変更してください。
 ``` java
 package com.example.demo;
