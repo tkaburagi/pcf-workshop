@@ -21,7 +21,7 @@ cf push pcfapp-<STUDENT_ID> -p demo-bug-1.0.0-BUILD-SNAPSHOT.jar
 
 `fly`コマンドを使ってConcourseにログインします。パスワードとユーザネームは事前に配布されます。
 ``` console
-fly login -t ci -c http://35.201.185.239 -n handson
+fly login -t ci -c http://ci.pcflab.jp -n handson
 ```
 
 CDのパイプラインを記述します。ConcourseではパイプラインはすべてYamlで定義します。
