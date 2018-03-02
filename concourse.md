@@ -59,16 +59,16 @@ jobs:
         source:
           repository: maven
       inputs:
-      - name: repo
+      - name: pcfapp
       caches:
-      - path: repo/m2   
+      - path: pcfapp/m2   
       run:
         path: bash
         args:
         - -c
         - |
           set -e
-          cd repo
+          cd pcfapp
           rm -rf ~/.m2
           ln -fs $(pwd)/m2 ~/.m2
           mvn test
@@ -130,7 +130,7 @@ resources:
       username: <STUDENT_ID>
       password: <YOUR_PASSWD>
       organization: <ORG_ID>
-      space: <SPACE_ID>
+      space: development
       skip_cert_check: true
 jobs:
 - name: unit-test
@@ -145,16 +145,16 @@ jobs:
         source:
           repository: maven
       inputs:
-      - name: repo
+      - name: pcfapp
       caches:
-      - path: repo/m2   
+      - path: pcfapp/m2   
       run:
         path: bash
         args:
         - -c
         - |
           set -e
-          cd repo
+          cd pcfapp
           rm -rf ~/.m2
           ln -fs $(pwd)/m2 ~/.m2
           mvn test
@@ -171,26 +171,38 @@ jobs:
         source:
           repository: maven
       inputs:
-      - name: repo
+      - name: pcfapp
       caches:
-      - path: repo/m2   
+      - path: pcfapp/m2   
       run:
         path: bash
         args:
         - -c
         - |
           set -e
-          cd repo
+          cd pcfapp
           rm -rf ~/.m2
           ln -fs $(pwd)/m2 ~/.m2
           mvn clean package
   - put: deploy-to-cf
     params: 
-      manifest: manifest.yml
-      current_app_name: pcfdapp
+      manifest: pcfapp/manifest.yml
+      current_app_name: pcfdapp-<STUDENT_ID>
 ```
 
-アプリケーションのソースコードを下記のように変更してください。
+Concourseのパイプラインを更新します。
+``` console
+fly -t ci set-pipeline -p simple-pipeline -c pipeline.yml
+```
+
+Web GUIで確認してください。
+![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-02%20at%201.40.26%20PM.png)
+
+
+次にアプリケーションのソースコードを下記のように変更してください。
+クローンしたレポジトリの下記のファイルです。
+`src/main/java/com/example/demo/PcfdemoappApplication.java`
+
 ``` java
 package com.example.demo;
 
@@ -244,6 +256,22 @@ public class PcfdemoappApplication {
 }
 ```
 
+また、`manifest.yml`内の`<STUDENT_ID>`を置き換えてください。
+``` yaml
+---
+applications:
+- name: pcfdpp-<STUDENT_ID>
+  memory: 1G
+  host: pcfapp-<STUDENT_ID>
+  domain: apps.pcflab.jp
+  instances: 1
+  path: target/pcfdemoapp.jar
+#  buildpack: java_buildpack
+  env:
+   management.security.enabled: false
+   endpoints.shutdown.enabled: true
+```
+
 ## Concourseパイプラインの実行
 アプリケーションを修正したらGithubにコミットします。GitにコミットするとConcourseから更新情報が取得され自動的にパイプラインが稼働します。
 
@@ -252,3 +280,16 @@ git add .
 git commit -m "Added I"
 git push
 ```
+
+Web GUIでConcourseが実行中のステータスに遷移していることを確認してください。10秒ほど経過すると実行されるはずです。
+`unit-test`が完了すると`build-and-artifact`に遷移し、ビルドとデプロイが実行されます。
+
+![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/ci-running-2.png)
+
+すべてのタスクが実行されると成功の状態に遷移します。
+
+![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/ci-green-2.png)
+
+curlコマンドのコンソールを見るとエラーが発生せずアプリケーションのアップグレードが完了していることがわかります。
+
+![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-02%20at%202.44.23%20PM.png)
