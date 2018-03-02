@@ -158,7 +158,7 @@ jobs:
           rm -rf ~/.m2
           ln -fs $(pwd)/m2 ~/.m2
           mvn test
-- name: build-and-artifact
+- name: build-and-deploy
   plan:
   - get: pcfdapp
     passed: [ unit-test ]
