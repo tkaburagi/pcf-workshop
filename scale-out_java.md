@@ -15,7 +15,7 @@
 
 ``` console
 $ ./mvnw package -Dmaven.test.skip=true
-$ cf push hello-redis-tmaki -p target/hello-redis-0.0.1-SNAPSHOT.jar -m 512m -i 2
+$ cf push hello-redis-<STUDENT_ID> -p target/hello-redis-0.0.1-SNAPSHOT.jar -m 512m -i 2
 ```
 
 別のターミナルを二つ立ち上げて次の2つのコマンドをそれぞれお実行しながらシャットダウンさせるとわかりやすいです。
@@ -107,7 +107,7 @@ $ cf restart hello-redis-<STUDENT_ID>
 以下のコマンドを実行してください。
 
 ```
-$ curl -X POST http://hello-redis-tmaki.cfapps.io/shutdown
+$ curl -X POST http://hello-redis-<STUDENT_ID>.cfapps.io/shutdown
 {"message":"Shutting down, bye..."}
 ```
 
