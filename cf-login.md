@@ -7,7 +7,7 @@ Pivotal Cloud Foundryの環境へログインします。
 * パスワード: 講師より配布
 
 ``` console
-cf login -a api.sys.pcflab.jp  -o handson-<STUDENT_ID> -s development--skip-ssl-validation
+cf login -a api.sys.pcflab.jp  -o handson-<STUDENT_ID> -s development --skip-ssl-validation
 ```
 
 ログインに成功したら下記のコマンドで確認し、正しく表示されればログイン成功です。
