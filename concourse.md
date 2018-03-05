@@ -265,8 +265,7 @@ applications:
   host: pcfapp-<STUDENT_ID>
   domain: apps.pcflab.jp
   instances: 1
-  path: target/pcfdemoapp.jar
-#  buildpack: java_buildpack
+  path: target/demo-1.0.0-BUILD-SNAPSHOT.jar
   env:
    management.security.enabled: false
    endpoints.shutdown.enabled: true
