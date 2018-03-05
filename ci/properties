@@ -1,0 +1,11 @@
+students: 10
+studentpass: 201835ikAOAHt
+orgnamebase: handson
+spacename: development
+usernamebase: student
+cfapi: api.sys.pcflab.jp
+cfadmin: admin
+cfadminpass: k7oig4BbTbikAOAHth9IR4pgv2SG2m_F
+ciadmin: concourse
+ciadminpass: password
+flag: rollback

@@ -1,0 +1,85 @@
+---
+resources:
+jobs:
+- name: create-cf-user
+  plan:
+  - task: create-cf-user
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: governmentpaas/cf-cli
+      params:
+          cfapi: {{cfapi}}
+          cfadmin: {{cfadmin}}
+          cfadminpass: {{cfadminpass}}
+          number: {{students}}
+          orgnamebase: {{orgnamebase}}
+          usernamebase: {{usernamebase}}
+          spacename: {{spacename}}
+          studentpass: {{studentpass}}
+          flag: {{flag}}
+      run:
+        path: sh
+        args:
+        - -c
+        - |
+          cf login -a $cfapi -u $cfadmin -p $cfadminpass --skip-ssl-validation -o system -s system
+          if [ $flag = "rollback" ]; then
+            for i in `seq 1 $number`
+            do
+              cf delete-user $usernamebase-$i -f 
+              cf delete-org $orgnamebase-$i -f 
+            done
+          else 
+            for i in `seq 1 $number`
+            do
+              cf create-org $orgnamebase-$i
+              cf create-space $spacename -o $orgnamebase-$i
+              cf create-user $usernamebase-$i $studentpass
+              cf set-org-role $usernamebase-$i $orgnamebase-$i OrgManager
+              cf set-space-role $usernamebase-$i $orgnamebase-$i $spacename SpaceDeveloper
+            done
+          fi
+- name: create-ci-user
+  plan:
+  - task: create-ci-user
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: canopyccfdocker/fly-concourse
+      params:
+          cfapi: {{cfapi}}
+          cfadmin: {{cfadmin}}
+          cfadminpass: {{cfadminpass}}
+          number: {{students}}
+          orgnamebase: {{orgnamebase}}
+          usernamebase: {{usernamebase}}
+          spacename: {{spacename}}
+          studentpass: {{studentpass}}
+          ciadmin: {{ciadmin}}
+          ciadminpass: {{ciadminpass}}
+          flag: {{flag}}
+      run:
+        path: bash
+        args:
+        - -c
+        - |
+          fly -t http://ci.pcflab.jp/
+          fly sync -t http://ci.pcflab.jp/ 
+          fly -v
+          fly login -t ci -c http://ci.pcflab.jp/ -u $ciadmin -p $ciadminpass
+          if [ $flag = "rollback" ]; then
+            for i in `seq 1 $number`
+            do
+              fly destroy-team -t ci -n handson-$i --non-interactive
+            done
+          else
+            for i in `seq 1 $number`
+            do
+              fly set-team -t ci -n handson-$i --basic-auth-username=$usernamebase-$i --basic-auth-password=$studentpass --non-interactive
+            done
+          fi
