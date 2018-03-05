@@ -63,15 +63,16 @@ jobs:
           ciadmin: {{ciadmin}}
           ciadminpass: {{ciadminpass}}
           flag: {{flag}}
+          cihost: {{cihost}}
       run:
         path: bash
         args:
         - -c
         - |
-          fly -t http://ci.pcflab.jp/
-          fly sync -t http://ci.pcflab.jp/ 
+          fly -t 
+          fly sync -t $cihost
           fly -v
-          fly login -t ci -c http://ci.pcflab.jp/ -u $ciadmin -p $ciadminpass
+          fly login -t ci -c $cihost -u $ciadmin -p $ciadminpass
           if [ $flag = "rollback" ]; then
             for i in `seq 1 $number`
             do
