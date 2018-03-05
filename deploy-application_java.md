@@ -87,7 +87,7 @@ $ cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar
 
 
 ``` console
-$ cf push hello-tmaki -p target/hello-cf-0.0.1-SNAPSHOT.jar
+$ cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar
 Creating app hello-tmaki in org tmaki / space development as ****@gmail.com...
 OK
 
@@ -194,7 +194,7 @@ hello-tmaki   started           1/1         1G       1G     hello-tmaki.cfapps.i
 
 Pivotal Cloud Foundry上にデプロイされたアプリケーションにもアクセスできました。
 
-[http://hello-tmaki.cfapps.io/env](http://hello-tmaki.cfapps.io/env)にアクセスすると環境変数やプロパティを確認できます。
+[http://hello-<STUDENT_ID>.pcflab.jp/env](http://hello-tmaki.cfapps.io/env)にアクセスすると環境変数やプロパティを確認できます。
 
 
 > **【Spring Boot 1.5以上の場合】**
@@ -206,8 +206,8 @@ Pivotal Cloud Foundry上にデプロイされたアプリケーションにも�
 > Cloud Foundryでは`cf set-env`で環境変数を設定でき、環境変数でこのプロパティを設定可能です。
 > 
 > ```
-> cf set-env hello-tmaki management.security.enabled false
-> cf restart hello-tmaki
+> cf set-env hello-<STUDENT_ID> management.security.enabled false
+> cf restart hello-<STUDENT_ID>
 > ```
 >
 > もちろん、プロダクション用時には適切な認可設定が必要です。
@@ -231,7 +231,7 @@ Pivotal Cloud Foundry上にデプロイされたアプリケーションにも�
 直近のログは`cf logs <App> --recent`で確認できます。
 
 ``` console
-$ cf logs hello-tmaki --recent
+$ cf logs hello-<STUDENT_ID> --recent
 Connected, dumping recent logs for app hello-tmaki in org tmaki / space development as ****@gmail.com...
 
 2016-03-23T14:35:03.24+0900 [STG/0]      OUT Downloading ruby_buildpack...
@@ -290,7 +290,7 @@ Connected, dumping recent logs for app hello-tmaki in org tmaki / space developm
 `cf delete`でアプリケーションを削除できます。
 
 ``` console
-$ cf delete hello-tmaki
+$ cf delete hello-<STUDENT_ID>
 
 Really delete the app hello-tmaki?> y
 Deleting app hello-tmaki in org tmaki / space development as ****@gmail.com...
@@ -353,7 +353,7 @@ binary_buildpack             10         true      false    binary_buildpack-cach
 Buildpackは`-b`で明示的に指定できます。明示することで自動検出のための時間を短縮できます。
 
 ``` console
-$ cf push hello-tmaki -p target/hello-cf-0.0.1-SNAPSHOT.jar -b java_buildpack
+$ cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar -b java_buildpack
 Updating app hello-tmaki in org tmaki / space development as ****@gmail.com...
 OK
 
@@ -420,15 +420,15 @@ buildpack: java_buildpack
 
 ここまで`cf`コマンドで指定してきたオプションは`manifest.yml`というyamlファイルに定義できます。
 
-* `cf push hello-tmaki -p target/hello-cf-0.0.1-SNAPSHOT.jar -b java_buildpack`
-* `cf set-env hello-tmaki management.security.enabled false`
+* `cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar -b java_buildpack`
+* `cf set-env hello-<STUDENT_ID> management.security.enabled false`
 
 を`manifest.yml`で表すと、
 
 ``` yaml
 ---
 applications:
-  - name: hello-tmaki
+  - name: hello-<STUDENT_ID>
     path: target/hello-cf-0.0.1-SNAPSHOT.jar
     buildpack: java_buildpack
     env:
