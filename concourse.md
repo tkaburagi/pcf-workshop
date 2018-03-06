@@ -16,9 +16,9 @@ forkしたらローカルにクローンします。
 git clone <>YOUR_REPO_URL>
 ```
 
-[バージョン1のアプリケーション](https://github.com/tkaburagi1214/pcf-workshop/blob/master/demo-bug-1.0.0-BUILD-SNAPSHOT.jar)を`cf push`します。
+[バージョン1のアプリケーション](https://github.com/tkaburagi1214/pcf-workshop/blob/master/demo-bug-1.0.0-BUILD-SNAPSHOT.jar)をダウンロードし、`cf push`します。`path/to`の部分はダウンロードをした自身のパスに置き換えてください。
 ``` console
-cf push pcfapp-<STUDENT_ID> -p demo-bug-1.0.0-BUILD-SNAPSHOT.jar 
+cf push pcfapp-<STUDENT_ID> -p path/to/demo-bug-1.0.0-BUILD-SNAPSHOT.jar 
 ```
 ![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-01%20at%2012.00.52%20PM.png)
 
@@ -89,8 +89,8 @@ fly -t ci set-pipeline -p simple-pipeline -c pipeline.yml
 CLIからパイプラインを実行します。
 
 ``` console
-fly -t ci trigger-job -j simple-pipeline/unit-test
 fly -t ci unpause-pipeline -p simple-pipeline
+fly -t ci trigger-job -j simple-pipeline/unit-test
 ```
 
 パイプラインが実行状態に遷移します。
