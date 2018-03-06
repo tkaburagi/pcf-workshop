@@ -69,7 +69,7 @@ jobs:
         args:
         - -c
         - |
-          fly -t 
+          fly -t $cihost -u $ciadmin -p $ ciadminpass
           fly sync -t $cihost
           fly -v
           fly login -t ci -c $cihost -u $ciadmin -p $ciadminpass
