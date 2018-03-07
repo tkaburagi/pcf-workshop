@@ -13,12 +13,12 @@ http://ci.pcflab.jp/
 forkしたらローカルにクローンします。
 
 ``` console
-git clone <>YOUR_REPO_URL>
+git clone <YOUR_REPO_URL>
 ```
 
 [バージョン1のアプリケーション](https://github.com/tkaburagi1214/pcf-workshop/blob/master/demo-bug-1.0.0-BUILD-SNAPSHOT.jar)をダウンロードし、`cf push`します。`path/to`の部分はダウンロードをした自身のパスに置き換えてください。
 ``` console
-cf push pcfapp-<STUDENT_ID> -p path/to/demo-bug-1.0.0-BUILD-SNAPSHOT.jar 
+cf push pcfapp-<STUDENT_ID> -p path/to/demo-bug-1.0.0-BUILD-SNAPSHOT.jar --hostname pcfapp-<STUDENT_ID> 
 ```
 ![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-01%20at%2012.00.52%20PM.png)
 
@@ -26,7 +26,7 @@ cf push pcfapp-<STUDENT_ID> -p path/to/demo-bug-1.0.0-BUILD-SNAPSHOT.jar
 
 `fly`コマンドを使ってConcourseにログインします。パスワードとユーザネームは事前に配布されます。
 ``` console
-fly login -t ci -c http://ci.pcflab.jp -n handson
+fly login -t ci -c http://ci.pcflab.jp -n handson-<NUMBER>
 ```
 
 CDのパイプラインを記述します。ConcourseではパイプラインはすべてYamlで定義します。
@@ -109,13 +109,14 @@ fly -t ci trigger-job -j simple-pipeline/unit-test
 
 端末を開いて以下のコマンドを実行し、アプリケーションからのレスポンス内容を監視します。
 ``` console
-while true;do curl -s https://pcfapp-<STUDENT_ID>.apps.pcflab.jp;echo;sleep 1;done
+while true;do curl -s https://pcfapp-<STUDENT_ID>.apps.pcflab.jp --insecure;echo;sleep 1;done
 ```
 
 まずはConcourseのパイプラインにアプリケーションをビルドとアップグレードするための処理を追加します。
 以下のテキストをコピーして`pipeline.yml`をすべて上書きします。
 
-``` yaml---
+``` yaml
+---
 resources:
   - name: pcfapp
     type: git
@@ -123,13 +124,13 @@ resources:
       uri: <GIT_URI>
       branch: master
     check_every: 10s
-  - name: cf
+  - name: deploy-to-cf
     type: cf
     source:
       api: api.sys.pcflab.jp
       username: <STUDENT_ID>
       password: <YOUR_PASSWD>
-      organization: <ORG_ID>
+      organization: handson-<STUDENT_ID>
       space: development
       skip_cert_check: true
 jobs:
@@ -160,7 +161,7 @@ jobs:
           mvn test
 - name: build-and-deploy
   plan:
-  - get: pcfdapp
+  - get: pcfapp
     passed: [ unit-test ]
     trigger: true
   - task: build
@@ -260,7 +261,7 @@ public class PcfdemoappApplication {
 ``` yaml
 ---
 applications:
-- name: pcfdpp-<STUDENT_ID>
+- name: pcfapp-<STUDENT_ID>
   memory: 1G
   host: pcfapp-<STUDENT_ID>
   domain: apps.pcflab.jp
