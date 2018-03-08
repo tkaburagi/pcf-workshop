@@ -188,7 +188,7 @@ jobs:
   - put: deploy-to-cf
     params: 
       manifest: pcfapp/manifest.yml
-      current_app_name: pcfdapp-<STUDENT_ID>
+      current_app_name: pcfapp-<STUDENT_ID>
 ```
 
 Concourseのパイプラインを更新します。
@@ -278,7 +278,7 @@ applications:
 ``` console
 git add .
 git commit -m "Added I"
-git push
+git push origin master
 ```
 
 Web GUIでConcourseが実行中のステータスに遷移していることを確認してください。10秒ほど経過すると実行されるはずです。
