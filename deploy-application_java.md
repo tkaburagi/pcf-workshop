@@ -188,13 +188,13 @@ name          requested state   instances   memory   disk   urls
 hello-tmaki   started           1/1         1G       1G     hello-tmaki.cfapps.io <---
 ```
 
-`urls`の列に出力されている値がアプリケーションのURLです。この場合は[http://hello-tmaki.cfapps.io](http://hello-tmaki.cfapps.io)です。
+`urls`の列に出力されている値がアプリケーションのURLです。この場合は[http://hello-tmaki.apps.pcflab.jp](http://hello-tmaki.apps.pcflab.jp)です。
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/79860de1-4846-c922-8583-787e77a185d2.png)
 
 Pivotal Cloud Foundry上にデプロイされたアプリケーションにもアクセスできました。
 
-[http://hello-<STUDENT_ID>.pcflab.jp/env](http://hello-tmaki.cfapps.io/env)にアクセスすると環境変数やプロパティを確認できます。
+[http://hello-<STUDENT_ID>.apps.pcflab.jp/env](http://hello-tmaki.cfapps.io/env)にアクセスすると環境変数やプロパティを確認できます。
 
 
 > **【Spring Boot 1.5以上の場合】**
