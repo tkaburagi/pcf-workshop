@@ -11,7 +11,7 @@ Cloud Foundryでは`cf map-route`、`umnap-route`コマンドによりルーテ�
 applications:
   - name: hello-<STUDENT_ID>
     path: target/hello-cf-0.0.1-SNAPSHOT.jar
-    buildpack: java_buildpack
+    buildpack: java_buildpack_offline
 ```
 
 `HelloCfApplication.java`の`hello`メソッドを少しだけ修正してください。
@@ -36,7 +36,7 @@ $ cf push
 現在のアプリケーションのバージョンを確認するために、`curl`を定期的に実行しましょう。
 
 ``` console
-$ while true; do curl -s http://hello-<STUDENT_ID>.cfapps.io; echo; sleep 1;done
+$ while true; do curl -s http://hello-<STUDENT_ID>.apps.pcflab.jp.io; echo; sleep 1;done
 ```
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/b47937f2-9d32-23fd-e386-de7018394372.png)
@@ -73,10 +73,10 @@ hello-tmaki-green   started           1/1         1G       1G     hello-tmaki-gr
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/6d89019e-59cd-4718-47c5-6115a97f29f3.png)
 
-`cf map-route <App> <Domain> -n <Hostname>`で`hello-<STUDENT_ID>.cfapps.io`へのリクエストが`hello-<STUDENT_ID>-green`にルーティングされるようにします。
+`cf map-route hello-<STUDENT_ID>-green <Domain> -n <Hostname>`で`hello-<STUDENT_ID>.apps.pcflab.jp`へのリクエストが`hello-<STUDENT_ID>-green`にルーティングされるようにします。
 
 ``` console
-$ cf map-route hello-<STUDENT_ID>-green cfapps.io -n hello-tmaki
+$ cf map-route hello-<STUDENT_ID>-green apps.pcflab.jp -n hello-tmaki
 Creating route hello-tmaki.cfapps.io for org tmaki / space development as ****@gmail.com...
 OK
 Route hello-tmaki.cfapps.io already exists
@@ -84,7 +84,7 @@ Adding route hello-tmaki.cfapps.io to app hello-tmaki-green in org tmaki / space
 OK
 ```
 
-2つのアプリケーションに対して`hello-<STUDENT_ID>.cfapps.io`でアクセスできるため、`curl`の結果は次のように`V1`と`V2`の両方が表示されるようになります。
+2つのアプリケーションに対して`hello-<STUDENT_ID>.apps.pcflab.jp`でアクセスできるため、`curl`の結果は次のように`V1`と`V2`の両方が表示されるようになります。
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/56c6deb5-1327-dd2f-f069-7cf0a0af6192.png)
 
@@ -92,7 +92,7 @@ OK
 `map-route`とは反対の`unmap-route`コマンドで`hello-<STUDENT_ID>`へのルーティングを外します。
 
 ``` console
-$ cf unmap-route hello-<STUDENT_ID> cfapps.io -n hello-<STUDENT_ID>
+$ cf unmap-route hello-<STUDENT_ID> apps.pcflab.jp -n hello-<STUDENT_ID>
 Removing route hello-tmaki.cfapps.io from app hello-tmaki in org tmaki / space development as ****@gmail.com...
 OK
 ```
@@ -103,14 +103,14 @@ OK
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/d3924903-283e-c923-1e9d-d1e28c648964.png)
 
 
-`V2`に問題がなければ、旧バージョンを削除し、`hello-<STUDENT_ID>-green.cfapps.io`のルーティングも削除します。
+`V2`に問題がなければ、旧バージョンを削除し、`hello-<STUDENT_ID>-green.apps.pcflab.jp`のルーティングも削除します。
 
 ``` console
 $ cf delete hello-<STUDENT_ID>
-$ cf unmap-route hello-<STUDENT_ID>-green cfapps.io -n hello-<STUDENT_ID>-green
+$ cf unmap-route hello-<STUDENT_ID>-green apps.pcflab.jp -n hello-<STUDENT_ID>-green
 ```
 
-`hello-tmaki.cfapps.io`にアクセスし続けていましたが、404エラーなどが発生することなく`V1`から`V2`へ移行することができました。
+`hello-tmaki.apps.pcflab.jp`にアクセスし続けていましたが、404エラーなどが発生することなく`V1`から`V2`へ移行することができました。
 
 ``` console
 $ cf apps
@@ -142,8 +142,8 @@ hello-tmaki   started           1/1         1G       1G     hello-tmaki.cfapps.i
 `cf delete hello-<STUDENT_ID>`する前に、もし新バージョン(green)で問題が発覚すれば、旧バージョン(blue)に切り戻しすればよいです。
 
 ``` console
-$ cf map-route hello-<STUDENT_ID> cfapps.io -n hello-<STUDENT_ID>
-$ cf unmap-route hello-<STUDENT_ID>-green cfapps.io -n hello-<STUDENT_ID>
+$ cf map-route hello-<STUDENT_ID> apps.pcflab.jp -n hello-<STUDENT_ID>
+$ cf unmap-route hello-<STUDENT_ID>-green apps.pcflab.jp -n hello-<STUDENT_ID>
 ```
 
 を行えば`V1`に戻ります。
@@ -223,7 +223,7 @@ $ echo V1 > index.html
 $ touch Staticfile
 $ cf push try-scale-over-v1 -b staticfile_buildpack -m 32m
 $ cf scale -i 10 try-scale-over-v1
-$ cf map-route try-scale-over-v1 cfapps.io -n try-scale-over
+$ cf map-route try-scale-over-v1 apps.pcflab.jp -n try-scale-over
 ```
 
 次に新バージョンを作成しデプロイします。
@@ -237,7 +237,7 @@ $ cf push try-scale-over-v2 -b staticfile_buildpack -m 32m
 
 ```
 $ cf stop try-scale-over-v2
-$ cf map-route try-scale-over-v2 cfapps.io -n try-scale-over
+$ cf map-route try-scale-over-v2 apps.pcflab.jp -n try-scale-over
 ```
 
 この段階では`V1`:10 - `V2`:0になっています。
@@ -255,7 +255,7 @@ try-scale-over-v2   stopped           0/1         32M      1G     try-scale-over
 現在のアプリケーションのバージョンを確認するために、`curl`を定期的に実行しましょう。
 
 ``` console
-$ while true; do curl http://try-scale-over.cfapps.io; sleep 1;done
+$ while true; do curl http://try-scale-over.apps.pcflab.jp; sleep 1;done
 ```
 
 いよいよバージョンアップします。

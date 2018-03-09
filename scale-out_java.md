@@ -11,7 +11,7 @@
     }
 ```
 
-今度はメモリ512MB、インスタンス数2を指定して`cf push`します。
+インスタンス数2を指定して`cf push`します。
 
 ``` console
 $ ./mvnw package -Dmaven.test.skip=true
@@ -21,7 +21,7 @@ $ cf push hello-redis-<STUDENT_ID> -p target/hello-redis-0.0.1-SNAPSHOT.jar -m 5
 別のターミナルを二つ立ち上げて次の2つのコマンドをそれぞれお実行しながらシャットダウンさせるとわかりやすいです。
 
 ```
-while true;do curl -s https://hello-redis-<STUDENT_ID>.cfapps.io/;echo;sleep 1;done
+while true;do curl -s https://hello-redis-<STUDENT_ID>.apps.pcflab.jp/;echo;sleep 1;done
 ```
 
 ```
@@ -31,10 +31,10 @@ while true;do cf app hello-redis-<STUDENT_ID>;sleep 1;done
 Cloud Foundryではスケールアウトも簡単です。`cf scale -i <Instance Count> <App>`で指定したインスタンス数にスケールアウトできます。
 
 ``` console
-$ cf scale -i 2 hello-redis-<STUDENT_ID>
+$ cf scale -i 3 hello-redis-<STUDENT_ID>
 ```
 
-ログを見て、2つ目のインスタンスであることを示す`[APP/1]`が出力されていることを確認してください。
+ログを見て、3つ目のインスタンスであることを示す`[APP/2]`が出力されていることを確認してください。
 
 ``` console
 $ cf logs hello-redis-<STUDENT_ID> --recent
@@ -107,7 +107,7 @@ $ cf restart hello-redis-<STUDENT_ID>
 以下のコマンドを実行してください。
 
 ```
-$ curl -X POST http://hello-redis-<STUDENT_ID>.cfapps.io/shutdown
+$ curl -X POST http://hello-redis-<STUDENT_ID>.apps.pcflab.jp/shutdown
 {"message":"Shutting down, bye..."}
 ```
 
