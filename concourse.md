@@ -20,7 +20,15 @@ git clone <YOUR_REPO_URL>
 ``` console
 cf push pcfapp-<STUDENT_ID> -p path/to/demo-bug-1.0.0-BUILD-SNAPSHOT.jar --hostname pcfapp-<STUDENT_ID> 
 ```
+
+pushが成功したらアプリの動作を確認してみます。
+``` console
+curl http://pcfapp-<STUDENT_ID>.apps.pcflab.jp
+```
+
 ![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-01%20at%2012.00.52%20PM.png)
+
+PVOTALとなっておりおかしいのでこれをPIVOTALと正しく表示されるようにConcourseを使って変更します。
 
 ## Concourseパイプラインの作成
 
@@ -30,9 +38,10 @@ fly login -t ci -c http://ci.pcflab.jp -n handson-<NUMBER>
 ```
 
 CDのパイプラインを記述します。ConcourseではパイプラインはすべてYamlで定義します。
-レポジトリ内に`ci`というディレクトリを作成し、`pipeline.yml`というファイルを作成して下記をコピペしてください。`<カッコ内>`の値は自分の環境に合わせて置き換えてください。
+レポジトリ内に`ci`というディレクトリを作成し、`pipeline.yml`というファイルを作成して下記をコピペしてください。`<カッコ内>`の値は自分の環境に合わせて置き換えてください。`<GIT_URI>`は必ず先ほどFORKしたURIを指定してください。(FORK元のURI(https://github.com/tkaburagi1214/pcf-workshop-app)は指定しないでください。
 
 ```
+cd pcf-workshop-app
 mkdir ci
 cd ci
 ```
@@ -93,7 +102,7 @@ fly -t ci unpause-pipeline -p simple-pipeline
 fly -t ci trigger-job -j simple-pipeline/unit-test
 ```
 
-パイプラインが実行状態に遷移します。
+ブラウザに戻ってパイプラインを確認すると、パイプラインが実行状態に遷移ています。
 ![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/ci-running.png)
 
 ジョブが終了しパイプラインが緑色に変化すれば処理が成功しています。
@@ -196,7 +205,7 @@ Concourseのパイプラインを更新します。
 fly -t ci set-pipeline -p simple-pipeline -c pipeline.yml
 ```
 
-Web GUIで確認してください。
+Webブラウザを更新して確認してください。パイプラインがアップデートされていることがわかります。
 ![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-02%20at%201.40.26%20PM.png)
 
 
@@ -273,12 +282,14 @@ applications:
 ```
 
 ## Concourseパイプラインの実行
-アプリケーションを修正したらGithubにコミットします。GitにコミットするとConcourseから更新情報が取得され自動的にパイプラインが稼働します。
+アプリケーションを修正したらGithubにコミットします。GitにコミットするとConcourseから更新情報が取得され自動的にパイプラインが稼働します。`pcf-workshop-app`ディレクトリにいることを確認してください。
 
 ``` console
-git add .
-git commit -m "Added I"
-git push origin master
+$ pwd 
+path/to/pcf-workshop-app
+$ git add .
+$ git commit -m "Added I"
+$ git push origin master
 ```
 
 Web GUIでConcourseが実行中のステータスに遷移していることを確認してください。10秒ほど経過すると実行されるはずです。

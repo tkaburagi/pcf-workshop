@@ -5,6 +5,7 @@ Pivotal Cloud Foundryの環境へログインします。
 * APIエンドポイント: api.sys.pcflab.jp
 * ユーザ名: 講師より配布
 * パスワード: 講師より配布 
+
 自分のPCにメモしてください。
 転記後に削除します。
 このパスワードは本日中のみ有効です。
@@ -24,4 +25,4 @@ org:            handson-instructor
 space:          development
 ```
 
-今回は"handson-*"というorganizationと"development"というspaceを利用します。
+今回は"handson-<STUDENT_ID>"というorganizationと"development"というspaceを利用します。

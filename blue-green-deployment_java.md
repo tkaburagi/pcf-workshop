@@ -5,6 +5,7 @@
 Cloud Foundryでは`cf map-route`、`umnap-route`コマンドによりルーティングの設定を行うことでBlue-Greenデプロイを実現できます。
 
 はじめに作成した`hello-cf`アプリケーションを使ってBlue-Greenデプロイを試しましょう。
+`hello-cf`のディレクトリの直下に以下のファイルを作成します。ファイル名は`manifest.yml`としてください。
 
 ``` yaml
 ---
