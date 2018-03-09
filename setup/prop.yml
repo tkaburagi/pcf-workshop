@@ -1,0 +1,12 @@
+cfapi: api.sys.pcflab.jp
+cfadmin: admin
+cfadminpass: k7oig4BbTbikAOAHth9IR4pgv2SG2m_F
+students: 10
+orgnamebase: handson-student
+usernamebase: student
+spacename: development
+studentpass: 5svkvd20e8
+ciadmin: ciadmin
+ciadminpass: NZNRfg0r6crUroqxElxWj-HT-NURmZlH
+flag: rollback
+cihost: http://ci.pcflab.jp
