@@ -25,4 +25,4 @@ org:            handson-instructor
 space:          development
 ```
 
-今回は"handson-*"というorganizationと"development"というspaceを利用します。
+今回は"handson-<STUDENT_ID>"というorganizationと"development"というspaceを利用します。
