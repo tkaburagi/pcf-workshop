@@ -4,20 +4,17 @@
 
 ### プロジェクト作成
 
-先ほどの`hello-cf`とは別のアプリケーションを作成します。
-
-以下のコマンドで雛形プロジェクトを作成してください。
+先ほどの`hello-cf`とは別のアプリケーションをクローンします。
+workspaceのディレクトリにいることを確認してください。
 
 ``` console
-$ curl https://start.spring.io/starter.tgz \
-       -d artifactId=hello-redis \
-       -d baseDir=hello-redis \
-       -d dependencies=web,actuator,cache,redis \
-       -d packageName=com.example \
-       -d applicationName=HelloRedisApplication | tar -xzvf -
+$ pwd 
+path/to/workspace
+$ git clone ----
+$ cd hello-redis
 ```
 
-生成されたプロジェクトの`hello-redis/src/main/java/com/example/HelloRedisApplication.java`を以下のように書き換えてください。
+クローンされたプロジェクトの`hello-redis/src/main/java/com/example/HelloRedisApplication.java`を以下のように書き換えてください。
 
 ``` java
 package com.example;
