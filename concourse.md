@@ -20,6 +20,12 @@ git clone <YOUR_REPO_URL>
 ``` console
 cf push pcfapp-<STUDENT_ID> -p path/to/demo-bug-1.0.0-BUILD-SNAPSHOT.jar --hostname pcfapp-<STUDENT_ID> 
 ```
+
+pushが成功したらアプリの動作を確認してみます。
+``` console
+curl http://pcfapp-<STUDENT_ID>.apps.pcflab.jp
+```
+
 ![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-01%20at%2012.00.52%20PM.png)
 
 PVOTALとなっておりおかしいのでこれをPIVOTALと正しく表示されるようにConcourseを使って変更します。
