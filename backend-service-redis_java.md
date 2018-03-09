@@ -10,7 +10,7 @@ workspaceのディレクトリにいることを確認してください。
 ``` console
 $ pwd 
 path/to/workspace
-$ git clone ----
+$ git clone https://github.com/tkaburagi/hello-redis
 $ cd hello-redis
 ```
 
