@@ -10,7 +10,7 @@
 ``` console
 $ mkdir pcf-workshop
 $ cd pcf-workshop
-$ git clone ------
+$ git clone https://github.com/tkaburagi/hello-cf
 $ cd hello-cf
 ```
 
