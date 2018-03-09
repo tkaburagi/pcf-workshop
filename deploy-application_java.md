@@ -4,18 +4,17 @@
 
 ### プロジェクトの作成
 
-以下のコマンドを実行すると、`hello-cf`フォルダに雛形プロジェクトが生成されます。
+こちらのアプリケーションを`git clone`します。
+任意のディレクトリで
 
 ``` console
-$ curl https://start.spring.io/starter.tgz \
-       -d artifactId=hello-cf \
-       -d baseDir=hello-cf \
-       -d dependencies=web,actuator \
-       -d packageName=com.example \
-       -d applicationName=HelloCfApplication | tar -xzvf -
+$ mkdir pcf-workshop
+$ cd pcf-workshop
+$ git clone ------
+$ cd hello-cf
 ```
 
-生成されたプロジェクトのソースを少しだけ修正します。任意のエディタ、IDEで
+クローンしたプロジェクトのソースを少しだけ修正します。任意のエディタ、IDEで
 `hello-cf/src/main/java/com/example/HelloCfApplication.java`を開いてください。
 
 ``` java
