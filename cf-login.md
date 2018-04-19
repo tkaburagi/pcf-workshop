@@ -26,3 +26,5 @@ space:          development
 ```
 
 今回は"handson-<STUDENT_ID>"というorganizationと"development"というspaceを利用します。
+
+<span style="color:red">ここまで完了したら進捗シートにチェックをしてください。</span>
