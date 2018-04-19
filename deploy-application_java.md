@@ -73,6 +73,8 @@ $ java -jar target/hello-cf-0.0.1-SNAPSHOT.jar
 
 Hello World!が表示されれば成功です。
 
+**ここまで完了したら進捗シートにチェックをしてください。**
+
 ### アプリケーションをPivotal Cloud FoundryにPush
 
 ビルドしたアプリケーションをPivotal Cloud FoundryにPushしましょう。
@@ -196,6 +198,8 @@ Pivotal Cloud Foundry上にデプロイされたアプリケーションにも�
 [http://hello-<STUDENT_ID>.apps.pcflab.jp/env](http://hello-tmaki.cfapps.io/env)にアクセスすると環境変数やプロパティを確認できます。
 
 
+**ここまで完了したら進捗シートにチェックをしてください。**
+
 > **【Spring Boot 1.5以上の場合】**
 >
 > Spring Boot 1.5では`/env`をはじめとするSpring Boot Actuatorエンドポイントの多くがデフォルトに認可制御されるようになりました。
@@ -295,30 +299,6 @@ Really delete the app hello-tmaki?> y
 Deleting app hello-tmaki in org tmaki / space development as ****@gmail.com...
 OK
 ```
-
-### (オプション) `--random-route`を使う
-
-先ほどはアプリケーション名に`-<STUDENT_ID>`をつけ一意にしました。`hello`だと重複する可能性が高いためです。実はアプリケーション名自体はスペース内で一意であればよく、一意にすべきはホスト名(`xxxx.cfapps.io`の`xxxx`の部分)です。これは`-n`または`--hostname`で指定できます。
-一意なホスト名にするには`--random-route`を追加すれば良いです。
-
-``` console
-$ cf push hello -p target/hello-cf-0.0.1-SNAPSHOT.jar --random-route
-```
-
-`cf apps`を確認すると、ホスト名が`hello-mooned-falsification`になっていることがわかります。
-
-``` console
-$ cf apps
-Getting apps in org tmaki / space development as ****@gmail.com...
-OK
-
-name    requested state   instances   memory   disk   urls   
-hello   started           1/1         1G       1G     hello-mooned-falsification.cfapps.io 
-```
-
-この場合、[http://hello-mooned-falsification.cfapps.io](
-http://hello-mooned-falsification.cfapps.io)にアクセスできます。
-
 
 ### Buildpackを指定する
 
@@ -444,3 +424,4 @@ Using manifest file /Users/makit/git/hello-cf/manifest.yml
 (以下、略)
 ```
 
+**ここまで完了したら進捗シートにチェックをしてください。**
