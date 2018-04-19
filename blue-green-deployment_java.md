@@ -42,6 +42,8 @@ $ while true; do curl -s http://hello-<STUDENT_ID>.apps.pcflab.jp.io; echo; slee
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/b47937f2-9d32-23fd-e386-de7018394372.png)
 
+**ここまで完了したら進捗シートにチェックをしてください。**
+
 `HelloCfApplication.java`の`hello`メソッドを少しだけ修正してください。
 
 ``` java
@@ -149,6 +151,7 @@ $ cf unmap-route hello-<STUDENT_ID>-green apps.pcflab.jp -n hello-<STUDENT_ID>
 
 を行えば`V1`に戻ります。
 
+**ここまで完了したら進捗シートにチェックをしてください。**
 
 ### Autopilotプラグインを使う
 
@@ -202,6 +205,8 @@ $ cf zero-downtime-push hello-<STUDENT_ID> -f manifest.yml
 3. 旧バージョンのアプリケーションを削除
 
 という手順を取っています。
+
+**ここまで完了したら進捗シートにチェックをしてください。**
 
 ### Scaleoverプラグインを使う
 
