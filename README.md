@@ -6,7 +6,7 @@
 2.  [PCFへログイン](cf-login.md)
 3.  [簡単なアプリケーションをデプロイ](deploy-application_java.md)
 4.  [バックエンドサービス(Redis)の利用](backend-service-redis_java.md)
-5.  [スケールアウト](scale-out_java.md)
+5.  [スケールアウト/オートヒーリング](scale-out_java.md)
 6.  [Blue-Greenデプロイ](blue-green-deployment_java.md)
 7.  [Concourseによる継続的デリバリー](concourse.md)
 8.  [PCF Metricsによるアプリケーションのモニタリング](pcf-metrics.md) 
