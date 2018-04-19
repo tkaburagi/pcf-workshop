@@ -30,6 +30,8 @@ curl http://pcfapp-<STUDENT_ID>.apps.pcflab.jp
 
 PVOTALとなっておりおかしいのでこれをPIVOTALと正しく表示されるようにConcourseを使って変更します。
 
+**ここまで完了したら進捗シートにチェックをしてください。**
+
 ## Concourseパイプラインの作成
 
 `fly`コマンドを使ってConcourseにログインします。パスワードとユーザネームは事前に配布されます。
@@ -112,6 +114,7 @@ fly -t ci trigger-job -j simple-pipeline/unit-test
 パイプラインの`unit-test`のボックスをクリックすると実行内容のログが確認できます。
 ![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/ci-log.png)
 
+**ここまで完了したら進捗シートにチェックをしてください。**
 
 ## アプリケーションの修正
 次にアプリケーションを修正し、gitにコミット、Concourseからその更新情報を取得し、アプリケーションをテストし、アップグレードという流れを実施します。
@@ -304,3 +307,5 @@ Web GUIでConcourseが実行中のステータスに遷移していることを�
 curlコマンドのコンソールを見るとエラーが発生せずアプリケーションのアップグレードが完了していることがわかります。
 
 ![](https://github.com/tkaburagi1214/pcf-workshop/blob/master/image/Screen%20Shot%200030-03-02%20at%202.44.23%20PM.png)
+
+**ここまで完了したら進捗シートにチェックをしてください。**
