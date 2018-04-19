@@ -84,3 +84,41 @@ jobs:
               fly set-team -t ci -n handson-$i --basic-auth-username=$usernamebase-$i --basic-auth-password=$studentpass --non-interactive
             done
           fi
+
+- name: create-pks-user
+  plan:
+  - task: create-pks-user
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: governmentpaas/cf-uaac
+          tag: latest
+      params:
+          pksadminsecret: {{pksadminsecret}}
+          pksapi: {{pksapi}}
+          pksadmin: {{pksadmin}}
+          number: {{students}}
+          flag: {{flag}}
+          studentpass: {{studentpass}}
+      run:
+        path: sh
+        args:
+        - -c
+        - |
+          uaac --version
+          uaac target https://$pksapi --skip-ssl-validation
+          uaac token client get $pksadmin -s $pksadminsecret 
+          if [ $flag = "rollback" ]; then
+            for i in `seq 1 $number`
+            do
+              uaac user delete student-$i
+            done
+          else
+            for i in `seq 1 $number`
+            do
+              uaac user add student-$i --emails student-$i@localhost -p $studentpass
+              uaac member add pks.clusters.manage student-$i
+            done
+          fi
