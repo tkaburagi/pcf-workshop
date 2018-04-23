@@ -11,14 +11,14 @@
     }
 ```
 
-インスタンス数2を指定して`cf push`します。
+インスタンス数1を指定して`cf push`します。
 
 ``` console
 $ ./mvnw package -Dmaven.test.skip=true
-$ cf push hello-redis-<STUDENT_ID> -p target/hello-redis-0.0.1-SNAPSHOT.jar -m 512m -i 2
+$ cf push hello-redis-<STUDENT_ID> -p target/hello-redis-0.0.1-SNAPSHOT.jar -m 512m -i 1
 ```
 
-別のターミナルを二つ立ち上げて次の2つのコマンドをそれぞれお実行しながらシャットダウンさせるとわかりやすいです。
+別のターミナルを二つ立ち上げて次の2つのコマンドをそれぞれ実行しながら以後のステップ進むとわかりやすいです。
 
 ```
 while true;do curl -s https://hello-redis-<STUDENT_ID>.apps.pcflab.jp/;echo;sleep 1;done
@@ -33,10 +33,10 @@ while true;do cf app hello-redis-<STUDENT_ID>;sleep 1;done
 Cloud Foundryではスケールアウトも簡単です。`cf scale -i <Instance Count> <App>`で指定したインスタンス数にスケールアウトできます。
 
 ``` console
-$ cf scale -i 3 hello-redis-<STUDENT_ID>
+$ cf scale -i 2 hello-redis-<STUDENT_ID>
 ```
 
-ログを見て、3つ目のインスタンスであることを示す`[APP/2]`が出力されていることを確認してください。
+ログを見て、2つ目のインスタンスであることを示す`[APP/1]`が出力されていることを確認してください。
 
 ``` console
 $ cf logs hello-redis-<STUDENT_ID> --recent
@@ -84,13 +84,13 @@ Cloud Foundry内のRouterによってHTTPリクエストは2インスタンス�
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/5f9e014c-e422-6882-ba82-3a66f4c4462b.png)
 
-4インスタンスにスケールアウトしましょう。
+3インスタンスにスケールアウトしましょう。
 
 ``` console
-$ cf scale -i 4 hello-redis-<STUDENT_ID>
+$ cf scale -i 3 hello-redis-<STUDENT_ID>
 ```
 
-しばらくすると3番目と4番目のインスタンスにもアクセスできていることがわかります。
+しばらくすると3番目のインスタンスにもアクセスできていることがわかります。
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/ba4cd5ca-157c-7feb-a58f-c0b1117eae85.png)
 
@@ -106,7 +106,7 @@ $ cf set-env hello-redis-<STUDENT_ID> endpoints.shutdown.enabled true
 $ cf restart hello-redis-<STUDENT_ID>
 ```
 
-インスタンス0~3までアクセスできることを確認した後、
+インスタンス0~2までアクセスできることを確認した後、
 以下のコマンドを実行してください。
 
 ```
@@ -114,8 +114,8 @@ $ curl -X POST http://hello-redis-<STUDENT_ID>.apps.pcflab.jp/shutdown
 {"message":"Shutting down, bye..."}
 ```
 
-4つのインスタンスのうちのインスタンスがダウンしたため、アプリケーションにアクセスすると残りのインスタンスからのみレスポンスがあります。
+3つのインスタンスのうちのインスタンスがダウンしたため、アプリケーションにアクセスすると残りのインスタンスからのみレスポンスがあります。
 
-Cloud Foundryは指定したインスタンス数を保つために自動でインスタンスを再起動させます。しばらくすると再び4つインスタンスからレスポンスがあることを確認できるでしょう。
+Cloud Foundryは指定したインスタンス数を保つために自動でインスタンスを再起動させます。しばらくすると再び3つのインスタンスからレスポンスがあることを確認できるでしょう。
 
 **ここまで完了したら進捗シートにチェックをしてください。**
