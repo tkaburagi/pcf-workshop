@@ -79,7 +79,7 @@ hello-tmaki-green   started           1/1         1G       1G     hello-tmaki-gr
 `cf map-route hello-<STUDENT_ID>-green <Domain> -n <Hostname>`で`hello-<STUDENT_ID>.apps.pcflab.jp`へのリクエストが`hello-<STUDENT_ID>-green`にルーティングされるようにします。
 
 ``` console
-$ cf map-route hello-<STUDENT_ID>-green apps.pcflab.jp -n hello-tmaki
+$ cf map-route hello-<STUDENT_ID>-green apps.pcflab.jp -n hello-<STUDENT_ID>
 Creating route hello-tmaki.cfapps.io for org tmaki / space development as ****@gmail.com...
 OK
 Route hello-tmaki.cfapps.io already exists
