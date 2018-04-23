@@ -11,6 +11,7 @@ PCF Metricsを利用することで直近1日間の
 
 を確認することができます。
 
+Apps Manager URL: https://apps.sys.pcflab.jp
 
 管理コンソールから「View in PCF Metrics」リンクをクリックしてください。
 
