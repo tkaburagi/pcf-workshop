@@ -14,11 +14,11 @@
 インスタンス数1を指定して`cf push`します。
 
 ``` console
-$ cf set-env hello-redis JAVA_OPTS '-XX:ReservedCodeCacheSize=32M -XX:MaxDirectMemorySize=32M'
-$ cf set-env hello-redis JBP_CONFIG_OPEN_JDK_JRE '{ memory_calculator: { stack_threads: 30 } }'
-$ cf scale -m 512m hello-redis
 $ ./mvnw package -Dmaven.test.skip=true
-$ cf push hello-redis-<STUDENT_ID> -p target/hello-redis-0.0.1-SNAPSHOT.jar -m 512m -i 1
+$ cf push hello-redis-<STUDENT_ID> -p target/hello-redis-0.0.1-SNAPSHOT.jar --no-start
+$ cf set-env hello-redis-<STUDENT_ID> JAVA_OPTS '-XX:ReservedCodeCacheSize=32M -XX:MaxDirectMemorySize=32M'
+$ cf set-env hello-redis-<STUDENT_ID> JBP_CONFIG_OPEN_JDK_JRE '{ memory_calculator: { stack_threads: 30 } }'
+$ cf scale -m 512m hello-redis-<STUDENT_ID>
 ```
 
 別のターミナルを二つ立ち上げて次の2つのコマンドをそれぞれ実行しながら以後のステップ進むとわかりやすいです。
