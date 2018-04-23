@@ -1,12 +1,15 @@
 ## Document
 [こちら](https://www.dropbox.com/s/6yhirlbgyac7jqt/pcf-workshop.pdf?dl=0)
 
+## Progression Sheet
+[こちら](https://docs.google.com/spreadsheets/d/1uI0cSdPhjgx8pD4_YCVJjoXHAZNQiVASZOqqb2IOl_U/edit?usp=sharing)
+
 ## Contents
 1.  [事前準備](prerequisite.md)
 2.  [PCFへログイン](cf-login.md)
 3.  [簡単なアプリケーションをデプロイ](deploy-application_java.md)
 4.  [バックエンドサービス(Redis)の利用](backend-service-redis_java.md)
-5.  [スケールアウト](scale-out_java.md)
+5.  [スケールアウト/オートヒーリング](scale-out_java.md)
 6.  [Blue-Greenデプロイ](blue-green-deployment_java.md)
 7.  [Concourseによる継続的デリバリー](concourse.md)
 8.  [PCF Metricsによるアプリケーションのモニタリング](pcf-metrics.md) 

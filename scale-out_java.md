@@ -1,4 +1,4 @@
-## スケールアウト (Java編)
+## スケールアウト/オートヒーリング (Java編)
 
 本章では[バックエンドサービスRedisの利用](backend-service-redis_java.md)で作成したプロジェクトを利用します。
 
@@ -27,6 +27,8 @@ while true;do curl -s https://hello-redis-<STUDENT_ID>.apps.pcflab.jp/;echo;slee
 ```
 while true;do cf app hello-redis-<STUDENT_ID>;sleep 1;done
 ```
+
+**ここまで完了したら進捗シートにチェックをしてください。**
 
 Cloud Foundryではスケールアウトも簡単です。`cf scale -i <Instance Count> <App>`で指定したインスタンス数にスケールアウトできます。
 
@@ -67,6 +69,7 @@ hello-redis-tmaki   started           2/2         1G       1G     hello-redis-tm
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/7a848882-f164-d0b0-6f0e-1f242b848499.png)
 
+**ここまで完了したら進捗シートにチェックをしてください。**
 
 インスタンス数やメモリ数はApps Managerの管理画面からも変更できます。
 
@@ -114,3 +117,5 @@ $ curl -X POST http://hello-redis-<STUDENT_ID>.apps.pcflab.jp/shutdown
 4つのインスタンスのうちのインスタンスがダウンしたため、アプリケーションにアクセスすると残りのインスタンスからのみレスポンスがあります。
 
 Cloud Foundryは指定したインスタンス数を保つために自動でインスタンスを再起動させます。しばらくすると再び4つインスタンスからレスポンスがあることを確認できるでしょう。
+
+**ここまで完了したら進捗シートにチェックをしてください。**

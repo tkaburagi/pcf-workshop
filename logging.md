@@ -196,6 +196,7 @@ EmailとPasswordを入力して、「Start Logging - Free Plan」をクリック
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/57c6c05c-c800-27ff-3641-590c8dc361a5.png)
 
+**ここまで完了したら進捗シートにチェックをしてください。**
 
 `cf create-user-provided-service <Service Instance Name> -l syslog-tls://<URL:PORT>`を実行し、アプリケーションログ転送サービスインスタンスを作成します。
 
@@ -243,6 +244,7 @@ $ cf restart hello-redis-<STUDENT_ID>
 $ cf delete hello-redis-<STUDENT_ID>
 ```
 
+**ここまで完了したら進捗シートにチェックをしてください。**
 
 
 > **ノート**

@@ -98,6 +98,8 @@ name      service      plan   bound apps   last operation
 myredis   p-redis      shared-vm                create succeeded 
 ```
 
+**ここまで完了したら進捗シートにチェックをしてください。**
+
 アプリケーションをビルドでpushしましょう。アプリケーションの起動前にサービスインスタンスをバインドする必要があるため、いったん`--no-start`オプションをつけてpushします。
 
 ``` console
@@ -205,6 +207,8 @@ $ cf start hello-redis-<STUDENT_ID>
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/5f9e014c-e422-6882-ba82-3a66f4c4462b.png)
 
 何回アクセスしてもキャッシュされているため、同じ結果が表示されることを確認してください。
+
+**ここまで完了したら進捗シートにチェックをしてください。**
 
 ここでは、Redisに関する設定を全く行いませんでしたが、何が起きているのでしょうか。ログを見てみましょう。
 
