@@ -51,8 +51,35 @@ Apps Manager URL: https://apps.sys.pcflab.jp
 ## Metrics Forwarderを使ってアプリケーションメトリクスを転送
 
 **アプリケーションの確認**
+hello-redis-<STUDENT>のアプリケーションが起動しているか確認をしてください。
+```console
+cf start hello-redis-<STUDENT_ID>
+cf app hello-redis-<STUDENT_ID>
+cf set-env hello-redis-<STUDENT_ID> management.security.enabled false
+```
 
 **Metrics Forwarderインスタンスの作成**
+```console
+cf marketplace
+Getting services from marketplace in org pcfdemoapp / space development as kab...
+OK
+
+service             plans                                    description
+app-autoscaler      standard                                 Scales bound applications in response to load
+metrics-forwarder   unlimited                                Custom metrics service
+p-cloudcache        small, dev-plan                          Pivotal Cloud Cache offers the ability to deploy a GemFire cluster as a service in Pivotal Cloud Foundry.
+p-redis             dedicated-vm, shared-vm                  Redis service to provide pre-provisioned instances configured as a datastore, running on a shared or dedicated VM.
+p.redis             cache-small, cache-medium, cache-large   Redis service to provide on-demand dedicated instances configured as a cache.
+
+TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+```
+Service MarketplaceにあるPCF Metrics Forwarderのインスタンスを払い出し、アプリケーションにバインドします。
+これによりMetrics Forwarderからアプリケーションのメトリクスを外部に転送できます。
+```console
+cf create-service metrics-forwarder unlimited my-forwarder
+cf bind-service my-forwarder hello-redis-<STUDENT_ID>
+cf restaget hello-redis-<STUDENT_ID>
+```
 
 **PCF Metricsのダッシュボードの設定**
 
