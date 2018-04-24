@@ -32,7 +32,7 @@ forkしたらローカルにクローンします。
 git clone <YOUR_REPO_URL>
 ```
 
-[バージョン1のアプリケーション](https://github.com/tkaburagi1214/pcf-workshop/blob/master/demo-bug-1.0.0-BUILD-SNAPSHOT.jar)をダウンロードし、`cf push`します。`path/to`の部分はダウンロードをした自身のパスに置き換えてください。
+[バージョン1のアプリケーション](https://github.com/tkaburagi/pcf-workshop/blob/master/snapshots/demo-bug-1.0.0-BUILD-SNAPSHOT.jar)をダウンロードし、`cf push`します。`path/to`の部分はダウンロードをした自身のパスに置き換えてください。
 ``` console
 cf push pcfapp-<STUDENT_ID> -p path/to/demo-bug-1.0.0-BUILD-SNAPSHOT.jar --hostname pcfapp-<STUDENT_ID> 
 ```
