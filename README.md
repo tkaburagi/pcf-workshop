@@ -21,4 +21,4 @@
 3. [アプリケーションログの転送](logging.md)
 
 ## Comming soon
-3. [Pivotal Container Serviceの利用](pks.md)
+1. [Pivotal Container Serviceの利用](pks.md)
