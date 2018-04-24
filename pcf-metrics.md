@@ -47,3 +47,13 @@ Apps Manager URL: https://apps.sys.pcflab.jp
 アプリケーション開発者がこのような便利な機能をセットアップすることなく使えるようになるのはPaaSのメリットの一つです。
 
 **ここまで完了したら進捗シートにチェックをしてください。**
+
+## Metrics Forwarderを使ってアプリケーションメトリクスを転送
+
+**アプリケーションの確認**
+
+**Metrics Forwarderインスタンスの作成**
+
+**PCF Metricsのダッシュボードの設定**
+
+**PCF Apps ManagerによるSpring Bootアプリケーションのモニタリング**
