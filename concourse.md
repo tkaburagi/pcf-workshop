@@ -3,6 +3,22 @@
 今回は下記の環境のConcourseサーバーを利用します。下記にアクセスできることは確認してください。
 http://ci.pcflab.jp/
 
+ログインができたら該当するOSのアイコンを押下し、flyコマンドをダウンロードします。
+ダウンロードをしたら自身のOSに合わせて実行権限を付与し、パスを通します。
+以下はMacの例です。
+```console
+chmod +x path/to/fly
+mv path/to/fly /usr/local/bin
+```
+新しい端末を立ち上げ以下を実行しflyがインストールされていることを確認して下さい。
+
+```console
+fly --version
+3.9.2
+```
+**ここまで完了したら進捗シートにチェックをしてください。**
+
+
 ## バージョン1のアプリケーションのデプロイ
 
 [pcf-workshop-app](https://github.com/tkaburagi1214/pcf-workshop-app)のレポジトリをforkします。
