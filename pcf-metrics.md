@@ -51,16 +51,16 @@ Apps Manager URL: https://apps.sys.pcflab.jp
 ## Metrics Forwarderを使ってアプリケーションメトリクスを転送
 
 **アプリケーションの確認**
-hello-redis-<STUDENT>のアプリケーションが起動しているか確認をしてください。
+`hello-redis-<STUDENT>`のアプリケーションが起動しているか確認をしてください。
 ```console
-cf start hello-redis-<STUDENT_ID>
-cf app hello-redis-<STUDENT_ID>
-cf set-env hello-redis-<STUDENT_ID> management.security.enabled false
+$ cf start hello-redis-<STUDENT_ID>
+$ cf app hello-redis-<STUDENT_ID>
+$ cf set-env hello-redis-<STUDENT_ID> management.security.enabled false
 ```
 
 **Metrics Forwarderインスタンスの作成**
 ```console
-cf marketplace
+$ cf marketplace
 Getting services from marketplace in org pcfdemoapp / space development as kab...
 OK
 
@@ -76,11 +76,31 @@ TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans o
 Service MarketplaceにあるPCF Metrics Forwarderのインスタンスを払い出し、アプリケーションにバインドします。
 これによりMetrics Forwarderからアプリケーションのメトリクスを外部に転送できます。
 ```console
-cf create-service metrics-forwarder unlimited my-forwarder
-cf bind-service my-forwarder hello-redis-<STUDENT_ID>
-cf restaget hello-redis-<STUDENT_ID>
+$ cf create-service metrics-forwarder unlimited my-forwarder
+$ cf bind-service my-forwarder hello-redis-<STUDENT_ID>
+$ cf restaget hello-redis-<STUDENT_ID>
 ```
 
 **PCF Metricsのダッシュボードの設定**
+PCF Metrics Forwarderによる転送されるメトリクスをPCF MetricsのGUIから見てみます。
+PCF Metrics: https://login.sys.pcflab.jp/login
+
+[写真]
+
+`ADD CHART`から自由にメトリクスを選択してみてください。
+
+[写真]
+
+**ここまで完了したら進捗シートにチェックをしてください。**
+
 
 **PCF Apps ManagerによるSpring Bootアプリケーションのモニタリング**
+PCF Apps Managerを利用するとSpring Boot Actuatorのエンドポイントを使ってSpring Bootアプリケーションの様々なモニタリングをGUI上で行うことができます。
+PCF Apps Managerにログインをしてください。
+
+Apps Manager URL: https://apps.sys.pcflab.jp
+
+[写真]
+
+
+**ここまで完了したら進捗シートにチェックをしてください。**
