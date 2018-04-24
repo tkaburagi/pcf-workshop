@@ -113,7 +113,7 @@ $ cf restart hello-redis-<STUDENT_ID>
 以下のコマンドを実行してください。
 
 ```
-$ curl -X POST http://hello-redis-<STUDENT_ID>.apps.pcflab.jp/shutdown
+$ curl -X POST https://hello-redis-<STUDENT_ID>.apps.pcflab.jp/shutdown --insecure
 {"message":"Shutting down, bye..."}
 ```
 
