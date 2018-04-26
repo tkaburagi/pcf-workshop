@@ -140,12 +140,15 @@ Apps Managerにログインし、左カラムの`Marketplace`を選択し、`App
 `Manage Autoscaling`を押し、Autoscalerの設定を実施します。
 
 1. 最大と最小のインスタンス数
+
 ![image](https://storage.googleapis.com/pcf-workshop/autoscale2.png)
 
 2. CPUの閾値の設定
+
 ![image](https://storage.googleapis.com/pcf-workshop/autoscale3.png)
 
 設定が完了したら`ENABLE`になっていることを確認します。
+
 ![image](https://storage.googleapis.com/pcf-workshop/autoscale4.png)
 
 30秒に一度CPU利用率がチェックされ、閾値を下回るとインスタンスが一つずつ減っていくのでその様子を下記のコマンドで確認します。
