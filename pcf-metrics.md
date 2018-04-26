@@ -83,13 +83,16 @@ $ cf restaget hello-redis-<STUDENT_ID>
 
 **PCF Metricsのダッシュボードの設定**
 PCF Metrics Forwarderによる転送されるメトリクスをPCF MetricsのGUIから見てみます。
-PCF Metrics: https://login.sys.pcflab.jp/login
+PCF Metrics: https://metrics.sys.pcflab.jp
 
-[写真]
+![image](https://storage.googleapis.com/pcf-workshop/metrics1.png)
 
 `ADD CHART`から自由にメトリクスを選択してみてください。
 
-[写真]
+![image](https://storage.googleapis.com/pcf-workshop/metrics2.png)
+
+メトリクス一覧にSpring Actuatorのメトリクスが可視化されます。
+![image](https://storage.googleapis.com/pcf-workshop/metrics3.png)
 
 **ここまで完了したら進捗シートにチェックをしてください。**
 
