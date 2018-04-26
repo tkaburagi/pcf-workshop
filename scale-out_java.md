@@ -137,4 +137,26 @@ Apps Managerにログインし、左カラムの`Marketplace`を選択し、`App
 インスタンスが出来たら作成したら`hello-redis-<STUDENT_ID>`の画面に移動し、Autoscalingをオンにします。
 ![image](https://storage.googleapis.com/pcf-workshop/autoscale.png)
 
-`Manage Autoscaling`を
+`Manage Autoscaling`を押し、Autoscalerの設定を実施します。
+
+1. 最大と最小のインスタンス数
+![image](https://storage.googleapis.com/pcf-workshop/autoscale2.png)
+
+2. CPUの閾値の設定
+![image](https://storage.googleapis.com/pcf-workshop/autoscale3.png)
+
+設定が完了したら`ENABLE`になっていることを確認します。
+![image](https://storage.googleapis.com/pcf-workshop/autoscale4.png)
+
+30秒に一度CPU利用率がチェックされ、閾値を下回るとインスタンスが一つずつ減っていくのでその様子を下記のコマンドで確認します。
+
+```console
+cf app hello-redis-<STUDENT_ID> | grep "%"
+#0   running   2018-04-24T07:07:36Z   0.3%   297.1M of 1G   138.1M of 1G
+#1   running   2018-04-26T06:49:18Z   0.0%   240.8M of 1G   138.1M of 1G
+#2   running   2018-04-26T06:49:18Z   0.0%   40K of 1G      8K of 1G
+```
+
+数秒に一度実行すると徐々にスケールインする様子がわかります。
+
+**ここまで完了したら進捗シートにチェックをしてください。**
