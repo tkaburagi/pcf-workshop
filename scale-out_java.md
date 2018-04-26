@@ -112,7 +112,7 @@ $ cf restart hello-redis-<STUDENT_ID>
 インスタンス0~2までアクセスできることを確認した後、
 以下のコマンドを実行してください。
 
-```
+```console
 $ curl -X POST https://hello-redis-<STUDENT_ID>.apps.pcflab.jp/shutdown --insecure
 {"message":"Shutting down, bye..."}
 ```
@@ -122,3 +122,19 @@ $ curl -X POST https://hello-redis-<STUDENT_ID>.apps.pcflab.jp/shutdown --insecu
 Cloud Foundryは指定したインスタンス数を保つために自動でインスタンスを再起動させます。しばらくすると再び3つのインスタンスからレスポンスがあることを確認できるでしょう。
 
 **ここまで完了したら進捗シートにチェックをしてください。**
+
+**オプション: PCF Auto-scalerの利用**
+PCFのライセンスに付随するApp Autoscalerを利用するとアプリケーションのパフォーマンスやカレンダーに基づいてアプリケーションの自動スケールアウト、スケール院を実現できます。
+
+Apps Manager: https://apps.sys.pcflab.jp
+Apps Managerにログインし、左カラムの`Marketplace`を選択し、`App Autoscaler`を選択してください。
+
+次に`Standard Plan`を選択し、下記を入力します。
+* Instance Name: my-autoscaler-<STUDENT_ID>
+* Add to Space: development
+* Bind to App: hello-redis-<STUDENT_ID>
+
+インスタンスが出来たら作成したら`hello-redis-<STUDENT_ID>`の画面に移動し、Autoscalingをオンにします。
+![image](https://storage.googleapis.com/pcf-workshop/autoscale.png)
+
+`Manage Autoscaling`を
