@@ -7,7 +7,7 @@
 ``` java
     @GetMapping("/")
     String hello() {
-        return greeter.hello() + " (" + System.getenv("CF_INSTANCE_INDEX") + ")"; // この行を変更
+        return greeter.hello() + " (" + System.getenv("CF_INSTANCE_INDEX") + ")" + " on " + System.getenv("CF_INSTANCE_IP"); // この行を変更
     }
 ```
 
