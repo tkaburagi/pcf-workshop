@@ -4,7 +4,7 @@ Pivotal Cloud Foundryの環境へログインします。
 
 * APIエンドポイント: api.sys.pcflab.jp
 * ユーザ名: 講師より配布
-* パスワード: 講師より配布 (P3n2KUgk)
+* パスワード: 講師より配布 (Ry7CtDzF)
 
 自分のPCにメモしてください。
 転記後に削除します。
