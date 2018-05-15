@@ -24,7 +24,7 @@ $ cf scale -m 512m hello-redis-<STUDENT_ID>
 別のターミナルを二つ立ち上げて次の2つのコマンドをそれぞれ実行しながら以後のステップ進むとわかりやすいです。
 
 ```
-while true;do curl -s https://hello-redis-<STUDENT_ID>.apps.pcflab.jp/;echo;sleep 1;done
+while true;do curl -s http://hello-redis-<STUDENT_ID>.apps.pcflab.jp/;echo;sleep 1;done
 ```
 
 ```
