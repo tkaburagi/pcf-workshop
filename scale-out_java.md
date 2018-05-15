@@ -15,7 +15,7 @@
 
 ``` console
 $ ./mvnw package -Dmaven.test.skip=true
-$ cf push hello-redis-<STUDENT_ID> -p target/hello-redis-0.0.1-SNAPSHOT.jar --no-start
+$ cf push hello-redis-<STUDENT_ID> -i 1 -p target/hello-redis-0.0.1-SNAPSHOT.jar --no-start 
 $ cf set-env hello-redis-<STUDENT_ID> JAVA_OPTS '-XX:ReservedCodeCacheSize=32M -XX:MaxDirectMemorySize=32M'
 $ cf set-env hello-redis-<STUDENT_ID> JBP_CONFIG_OPEN_JDK_JRE '{ memory_calculator: { stack_threads: 30 } }'
 $ cf scale -m 512m hello-redis-<STUDENT_ID>
