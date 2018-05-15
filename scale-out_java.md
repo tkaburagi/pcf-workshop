@@ -134,7 +134,7 @@ while true;do cf app hello-redis-<STUDENT_ID>;sleep 1;done
 ```
 
 **オプション: PCF Auto-scalerの利用**
-PCFのライセンスに付随するApp Autoscalerを利用するとアプリケーションのパフォーマンスやカレンダーに基づいてアプリケーションの自動スケールアウト、スケール院を実現できます。
+PCFのライセンスに付随するApp Autoscalerを利用するとアプリケーションのパフォーマンスやカレンダーに基づいてアプリケーションの自動スケールアウト、スケールインを実現できます。
 
 Apps Manager: https://apps.sys.pcflab.jp
 Apps Managerにログインし、左カラムの`Marketplace`を選択し、`App Autoscaler`を選択してください。
