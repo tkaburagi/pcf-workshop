@@ -415,6 +415,10 @@ applications:
 ```
 
 となります。
+hello-cfのディレクトリにいることを確認し、上記のyamlを作成してください。
+```console
+vi manifest.yml
+```
 
 このManifestファイルがあれば実行コマンドは`cf push`だけで良いです。
 
