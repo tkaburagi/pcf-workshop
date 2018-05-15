@@ -409,7 +409,7 @@ buildpack: java_buildpack
 applications:
   - name: hello-<STUDENT_ID>
     path: target/hello-cf-0.0.1-SNAPSHOT.jar
-    buildpack: java_buildpack
+    buildpack: java_buildpack_offline
     env:
       management.security.enabled: false
 ```
