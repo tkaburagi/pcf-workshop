@@ -409,12 +409,16 @@ buildpack: java_buildpack
 applications:
   - name: hello-<STUDENT_ID>
     path: target/hello-cf-0.0.1-SNAPSHOT.jar
-    buildpack: java_buildpack
+    buildpack: java_buildpack_offline
     env:
       management.security.enabled: false
 ```
 
 となります。
+hello-cfのディレクトリにいることを確認し、上記のyamlを作成してください。
+```console
+$ vi manifest.yml
+```
 
 このManifestファイルがあれば実行コマンドは`cf push`だけで良いです。
 
