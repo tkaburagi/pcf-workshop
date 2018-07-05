@@ -8,9 +8,9 @@ spacename: development
 studentpass: Ry7CtDzF
 ciadmin: ciadmin
 ciadminpass: NZNRfg0r6crUroqxElxWj-HT-NURmZlH
-flag: rollback
-#flag: no
+#flag: rollback
+flag: no
 cihost: http://ci.pcflab.jp
-pksadminsecret: ErPG_kf0bCJ7nXKY0mjZFPJXRHsUozEi
+pksadminsecret: U9txjwy1qA0n7TnD_Tv1XFZqQ_ih3VM4
 pksadmin: admin
 pksapi: api.pks.pcflab.jp:8443
