@@ -21,7 +21,6 @@ medium   241118e5-69b2-4ef9-b47f-4d2ab071aff5  Medium deployment plan for K8s cl
 
 ```console
 $ pks create-cluster <STUDENT_ID>-k8s --external-hostname=<IP> --plan=minimum
-
 Name:                     kabu-cluster
 Plan Name:                minimum
 UUID:                     4c54da86-2b2f-404a-9de4-5619493ef74e
@@ -39,7 +38,6 @@ Use 'pks cluster kabu-cluster' to monitor the state of your cluster
 
 ``` console
 $ pks clusters
-
 Name             Plan Name  UUID                                  Status       Action
 kabu-cluster-10  minimum    4c54da86-2b2f-404a-9de4-5619493ef74e  in progress  CREATE
 ```
@@ -81,7 +79,6 @@ KubeDNS is running at https://35.189.177.132:8443/api/v1/namespaces/kube-system/
 monitoring-influxdb is running at https://35.189.177.132:8443/api/v1/namespaces/kube-system/services/monitoring-influxdb/proxy
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-
 ```
 ``` console
 $ kubectl get all
