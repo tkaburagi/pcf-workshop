@@ -200,20 +200,17 @@ Pivotal Cloud Foundry上にデプロイされたアプリケーションにも�
 
 **ここまで完了したら進捗シートにチェックをしてください。**
 
-> **【Spring Boot 1.5以上の場合】**
->
-> Spring Boot 1.5では`/env`をはじめとするSpring Boot Actuatorエンドポイントの多くがデフォルトに認可制御されるようになりました。
-> そのため、`/env`にアクセスしても401エラーが返ります。
->
-> この認可制御を無効にするにはプロパティ`management.security.enabled`を`false`に設定する必要があります。
-> Cloud Foundryでは`cf set-env`で環境変数を設定でき、環境変数でこのプロパティを設定可能です。
-> 
-> ```
-> cf set-env hello-<STUDENT_ID> management.security.enabled false
-> cf restart hello-<STUDENT_ID>
-> ```
->
-> もちろん、プロダクション用時には適切な認可設定が必要です。
+Spring Boot 1.5では`/env`をはじめとするSpring Boot Actuatorエンドポイントの多くがデフォルトに認可制御されるようになりました。
+そのため、`/env`にアクセスしても401エラーが返ります。
+
+この認可制御を無効にするにはプロパティ`management.security.enabled`を`false`に設定する必要があります。
+Cloud Foundryでは`cf set-env`で環境変数を設定でき、環境変数でこのプロパティを設定可能です。
+ 
+```
+cf set-env hello-<STUDENT_ID> management.security.enabled false
+cf restart hello-<STUDENT_ID>
+```
+もちろん、プロダクション用時には適切な認可設定が必要です。
 
 
 ![image](https://qiita-image-store.s3.amazonaws.com/0/1852/dfafa4f4-0ec1-e568-ba5e-3d5cfaa799a5.png)
