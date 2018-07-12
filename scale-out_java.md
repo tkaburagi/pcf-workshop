@@ -74,19 +74,6 @@ hello-redis-tmaki   started           2/2         1G       1G     hello-redis-tm
 
 **ここまで完了したら進捗シートにチェックをしてください。**
 
-インスタンス数やメモリ数はApps Managerの管理画面からも変更できます。
-
-![image](https://qiita-image-store.s3.amazonaws.com/0/1852/fae8e9f5-10d9-9533-bcd7-620f6e912546.png)
-
-Statusの表にインスタンスの情報が反映されます。
-
-![image](https://qiita-image-store.s3.amazonaws.com/0/1852/f705c419-76fc-6231-9f7f-355f951220c2.png)
-
-Cloud Foundry内のRouterによってHTTPリクエストは2インスタンスに分散されますが、
-インスタンス間でRedisキャッシュが共有されているため、出力結果は依然として同じです。
-
-![image](https://qiita-image-store.s3.amazonaws.com/0/1852/5f9e014c-e422-6882-ba82-3a66f4c4462b.png)
-
 3インスタンスにスケールアウトしましょう。
 
 ``` console
