@@ -1,5 +1,7 @@
 # Pivotal Container Service(PKS) Hands-on
 PKSを利用したK8sクラスタのプロビジョニング、K8sクラスタへのコンテのデプロイを体験します。
+![](https://github.com/tkaburagi/pcf-workshop/blob/master/image/40194879-c876eff0-5a46-11e8-8fae-b8e92383c9f4.png)
+
 
 ## Kubernetesクラスターを作る
 ``` console
