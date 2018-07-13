@@ -88,4 +88,7 @@ NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.100.200.1   <none>        443/TCP   1h
 ```
 ## Kubernetesにアプリをデプロイする
+``` console
+```
+
 
