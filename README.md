@@ -13,7 +13,9 @@
 6.  [Blue-Greenデプロイ](blue-green-deployment_java.md)
 7.  [Concourseによる継続的デリバリー](concourse.md)
 8.  [PCF Metricsによるアプリケーションのモニタリング](pcf-metrics.md) 
-9.  [アンケート](https://goo.gl/forms/2UuxaHIHG8PriGGb2)
+9.	[PCF Healthwatchによるプラットフォームモニタリング](pcf-healthwatch.md)
+10. [Prometheusによるプラットフォームモニタリング](prometheus.md)
+11.  [アンケート](https://goo.gl/forms/2UuxaHIHG8PriGGb2)
 
 ## Additional contents
 1. [バックエンドサービス(MySQL)の利用](backend-service-mysql_java.md)
