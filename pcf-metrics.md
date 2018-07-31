@@ -1,4 +1,4 @@
-## PCF Healthwatchによるプラットフォームモニタリング
+## PCF Metricsによるアプリケーションのモニタリング
 
 PCFの独自機能として、[PCF Metrics](https://metrics.run.pivotal.io)というアプリケーションのメトリクスやログを蓄積して視覚化する仕組みが用意されています。PCFのライセンス内で無償で利用可能です。
 
