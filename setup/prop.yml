@@ -5,9 +5,9 @@ students: 10
 orgnamebase: handson-student
 usernamebase: student
 spacename: development
-studentpass: Ry7CtDzF
+studentpass: mN2pbLPK
 ciadmin: ciadmin
-ciadminpass: NZNRfg0r6crUroqxElxWj-HT-NURmZlH
+ciadminpass: NZNRfg0r6crUroqxElxWj-HT-NURmZl
 #flag: rollback
 flag: no
 cihost: http://ci.pcflab.jp
