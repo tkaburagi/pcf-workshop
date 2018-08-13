@@ -15,12 +15,10 @@
 8.  [PCF Metricsによるアプリケーションのモニタリング](pcf-metrics.md) 
 9.	PCF Healthwatchによるプラットフォームモニタリング
 10. Prometheusによるプラットフォームモニタリング
-11. [アンケート](https://goo.gl/forms/2UuxaHIHG8PriGGb2)
+11. [Pivotal Container Serviceの利用](pks.md)
+12. [アンケート](https://goo.gl/forms/2UuxaHIHG8PriGGb2)
 
 ## Additional contents
 1. [バックエンドサービス(MySQL)の利用](backend-service-mysql_java.md)
 2. [バックエンドサービス(Oracle Database)の利用](backend-service-oracle_java.md)
 3. [アプリケーションログの転送](logging.md)
-
-## Comming soon
-1. [Pivotal Container Serviceの利用](pks.md)
