@@ -396,7 +396,7 @@ buildpack: java_buildpack
 
 ここまで`cf`コマンドで指定してきたオプションは`manifest.yml`というyamlファイルに定義できます。
 
-* `cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar -b java_buildpack`
+* `cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar -b java_buildpack_offline`
 * `cf set-env hello-<STUDENT_ID> management.security.enabled false`
 
 を`manifest.yml`で表すと、
