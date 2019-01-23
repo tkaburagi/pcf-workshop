@@ -15,7 +15,7 @@ $ cd hello-cf
 ```
 
 クローンしたプロジェクトのソースを少しだけ修正します。任意のエディタ、IDEで
-`hello-cf/src/main/java/com/example/HelloCfApplication.java`を開いてください。
+`src/main/java/com/example/HelloCfApplication.java`を開いてください。
 
 ``` java
 package com.example;
