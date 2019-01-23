@@ -14,7 +14,7 @@ $ git clone https://github.com/tkaburagi/hello-redis
 $ cd hello-redis
 ```
 
-クローンされたプロジェクトの`hello-redis/src/main/java/com/example/HelloRedisApplication.java`を以下のように書き換えてください。
+クローンされたプロジェクトの`src/main/java/com/example/HelloRedisApplication.java`を以下のように書き換えてください。
 
 ``` java
 package com.example;
