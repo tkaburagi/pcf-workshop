@@ -329,7 +329,7 @@ binary_buildpack             10         true      false    binary_buildpack-cach
 Buildpackは`-b`で明示的に指定できます。明示することで自動検出のための時間を短縮できます。
 
 ``` console
-$ cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar -b java_buildpack
+$ cf push hello-<STUDENT_ID> -p target/hello-cf-0.0.1-SNAPSHOT.jar -b java_buildpack_offline
 Updating app hello-tmaki in org tmaki / space development as ****@gmail.com...
 OK
 
